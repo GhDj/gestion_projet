@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -28,67 +28,26 @@
             </div>
         </li>
         <!--/. Logo -->
-        <!--Social-->
-        <li>
-            <ul class="social">
-                <li><a class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
-                <li><a class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
-                <li><a class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
-                <li><a class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
-            </ul>
-        </li>
-        <!--/Social-->
-        <!--Search Form-->
-        <li>
-            <form class="search-form" role="search">
-                <div class="form-group waves-effect">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-            </form>
-        </li>
-        <!--/.Search Form-->
+
+        <hr>
+
         <!-- Side navigation links -->
         <li>
-            <ul class="collapsible collapsible-accordion">
-                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Submit blog<i class="fa fa-angle-down rotate-icon"></i></a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="#" class="waves-effect">Submit listing</a>
-                            </li>
-                            <li><a href="#" class="waves-effect">Registration form</a>
-                            </li>
-                        </ul>
-                    </div>
+
+            <ul class="collapsible collapsible-accordion sidenav">
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-list fa-2x"></i> <br> Tableau de bord</a>
+
                 </li>
-                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Instruction<i class="fa fa-angle-down rotate-icon"></i></a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="#" class="waves-effect">For bloggers</a>
-                            </li>
-                            <li><a href="#" class="waves-effect">For authors</a>
-                            </li>
-                        </ul>
-                    </div>
+                <hr>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-file-text-o fa-2x"></i> <br> Projets</a>
                 </li>
-                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i> About<i class="fa fa-angle-down rotate-icon"></i></a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="#" class="waves-effect">Introduction</a>
-                            </li>
-                            <li><a href="#" class="waves-effect">Monthly meetings</a>
-                            </li>
-                        </ul>
-                    </div>
+                <hr>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-files-o fa-2x"></i> <br> Rapports</a>
+
                 </li>
-                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i> Contact me<i class="fa fa-angle-down rotate-icon"></i></a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="#" class="waves-effect">FAQ</a>
-                            </li>
-                            <li><a href="#" class="waves-effect">Write a message</a>
-                            </li>
-                        </ul>
-                    </div>
+                <hr>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-pie-chart fa-2x"></i> <br> Diagrammes </a>
+
                 </li>
             </ul>
         </li>
@@ -107,18 +66,18 @@
             </button>
 
                 <div class="breadcrumb-dn mr-auto">
-                    <p>Material Design for Bootstrap</p>
+                    <p>@yield('page-title')</p>
                 </div>
 
                 <ul class="nav navbar-nav ml-auto flex-row">
                     <li class="nav-item active">
-                        <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link">Messages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Features</a>
+                        <a class="nav-link">Notifications</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Pricing</a>
+                        <a class="nav-link">Profile</a>
                     </li>
 
                 </ul>

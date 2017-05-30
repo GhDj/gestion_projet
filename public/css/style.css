@@ -8,3 +8,16 @@
     background: #fff;
     z-index: 99999;
 }
+
+.navbar.navbar-dark .breadcrumb a, .navbar.navbar-dark .navbar-nav .nav-item a {
+    color: #040404;
+}
+
+.side-nav li {
+    margin: 22px 0px;
+    font-size: 1.2em;
+}
+
+.side-nav li a {
+    padding: 18px 0px;
+}
