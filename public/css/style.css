@@ -1,0 +1,10 @@
+.nav-wrapper {
+    padding: 0 !important;
+}
+
+#side-nav {
+    height: 100%;
+    position: fixed;
+    background: #fff;
+    z-index: 99999;
+}
