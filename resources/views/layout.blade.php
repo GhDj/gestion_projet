@@ -29,7 +29,7 @@
         </li>
         <!--/. Logo -->
 
-        <hr>
+       <li> <hr></li>
 
         <!-- Side navigation links -->
         <li>
@@ -38,17 +38,18 @@
                 <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-list fa-2x"></i> <br> Tableau de bord</a>
 
                 </li>
-                <hr>
+                <li><hr></li>
                 <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-file-text-o fa-2x"></i> <br> Projets</a>
                 </li>
-                <hr>
+                <li><hr></li>
                 <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-files-o fa-2x"></i> <br> Rapports</a>
 
                 </li>
-                <hr>
+               <li> <hr></li>
                 <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-pie-chart fa-2x"></i> <br> Diagrammes </a>
 
                 </li>
+                <li> <hr></li>
             </ul>
         </li>
         <!--/. Side navigation links -->
