@@ -30,3 +30,117 @@
 .fa-2x {
     font-size: 1.5em;
 }
+
+@media (min-width: 1400px) {
+     #page-wrapper {
+         padding: 5% 0;
+    }
+}
+
+@media (min-width: 992px){
+
+    #page-wrapper {
+        padding: 5% 0;
+    }
+}
+
+@media (min-width: 768px) {
+
+    #page-wrapper {
+        padding: 5% 0;
+    }
+}
+
+
+/************** Radio buttons *************/
+
+
+
+.radio-container {
+    clear: both;
+    display: table-cell;
+    margin: 0px 50px;
+    padding: 0px 3%;
+}
+
+.rd-label{
+    width: 200px;
+    border-radius: 3px;
+    border: 1px solid #D1D3D4;
+    position: relative;
+    float: left;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    margin-top: 2em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input[type=radio]:empty {
+    margin-left: -999px;
+    visibility: hidden;
+}
+
+.rd-label::before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 2.5em;
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+}
+
+input[type=radio]:hover:not(:checked) ~ .rd-label:before {
+    content:'\2714';
+    text-indent: .9em;
+    color: #C2C2C2;
+}
+
+
+input[type=radio]:hover:not(:checked) ~ .rd-label {
+    color: #888;
+}
+
+/* toggle on */
+input[type=radio]:checked ~ .rd-label:before {
+    content:'\2714';
+    text-indent: .9em;
+    color: #9CE2AE;
+    background-color: #4DCB6D;
+}
+
+input[type=radio]:checked ~ .rd-label {
+    color: #777;
+}
+
+/* radio focus */
+input[type=radio]:focus ~ .rd-label:before {
+    box-shadow: 0 0 0 3px #999;
+}
+
+/************************ radio ends here *************/
+
+input[type=date]:focus:not([readonly])+label, input[type=datetime-local]:focus:not([readonly])+label, input[type=email]:focus:not([readonly])+label, input[type=number]:focus:not([readonly])+label, input[type=password]:focus:not([readonly])+label, input[type=search-md]:focus:not([readonly])+label, input[type=search]:focus:not([readonly])+label, input[type=tel]:focus:not([readonly])+label, input[type=text]:focus:not([readonly])+label, input[type=time]:focus:not([readonly])+label, input[type=url]:focus:not([readonly])+label, textarea.md-textarea:focus:not([readonly])+label {
+    color: #06bf51;
+}
+
+input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=search-md]:focus:not([readonly]), input[type=search]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=url]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #06bf51;
+    box-shadow: 0 1px 0 0 #087c37;
+}
+
+.form-control:focus {
+    color: #464a4c;
+    border-color: #06bf51;
+    outline: 0;
+}
+
+.sidenav li a {
+    color: #292b2c;
+}

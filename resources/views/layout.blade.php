@@ -14,7 +14,7 @@
         Connect Project - @yield('title')
     </title>
 </head>
-<body class="grey lighten-3">
+<body class="grey lighten-5">
 
 <div class="container-fluid">
 <div class="row">
@@ -47,6 +47,10 @@
                 </li>
                <li> <hr></li>
                 <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-pie-chart fa-2x"></i> <br> Diagrammes </a>
+
+                </li>
+                <li> <hr></li>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="user"><i class="fa fa-user fa-2x"></i> <br> Employés </a>
 
                 </li>
                 <li> <hr></li>
@@ -90,9 +94,12 @@
 </div>
 <!--Navbar-->
 
-<div class="container">
-
+<div id="page-wrapper">
+    @yield('content')
 </div>
+
+
+
 <!--/Start your project here-->
 
 <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
@@ -103,6 +110,7 @@
 <script>
 
     $('nav').css('padding-left',$('#side-nav').width()+40);
+    $('#page-wrapper').css('padding-left',$('#side-nav').width());
 </script>
 
 </body>
