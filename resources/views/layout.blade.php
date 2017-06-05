@@ -18,7 +18,7 @@
 
 <div class="container-fluid">
 <div class="row">
-<div id="side-nav" class="col col-sm-1">
+<div id="side-nav" class="col col-sm-2">
 <div class="container">
     <ul id="slide-out" class="side-nav fixed sn-bg-1 custom-scrollbar ps-container ps-theme-default" data-ps-id="b15ceb99-3614-8113-35dd-347d90a2d0f4" style="transform: translateX(0%);">
         <!-- Logo -->
