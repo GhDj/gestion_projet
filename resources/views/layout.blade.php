@@ -18,7 +18,7 @@
 
 <div class="container-fluid">
 <div class="row">
-<div id="side-nav" class="col col-sm-2">
+<div id="side-nav" class="col col-sm-1">
 <div class="container">
     <ul id="slide-out" class="side-nav fixed sn-bg-1 custom-scrollbar ps-container ps-theme-default" data-ps-id="b15ceb99-3614-8113-35dd-347d90a2d0f4" style="transform: translateX(0%);">
         <!-- Logo -->
@@ -35,22 +35,22 @@
         <li>
 
             <ul class="collapsible collapsible-accordion sidenav">
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-list fa-2x"></i> <br> Tableau de bord</a>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-list"></i> <br> Tableau de bord</a>
 
                 </li>
                 <li><hr></li>
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-file-text-o fa-2x"></i> <br> Projets</a>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-file-text-o"></i> <br> Projets</a>
                 </li>
                 <li><hr></li>
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-files-o fa-2x"></i> <br> Rapports</a>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-files-o"></i> <br> Rapports</a>
 
                 </li>
                <li> <hr></li>
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-pie-chart fa-2x"></i> <br> Diagrammes </a>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-pie-chart"></i> <br> Diagrammes </a>
 
                 </li>
                 <li> <hr></li>
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="user"><i class="fa fa-user fa-2x"></i> <br> Employés </a>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="user"><i class="fa fa-user"></i> <br> Employés </a>
 
                 </li>
                 <li> <hr></li>
