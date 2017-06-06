@@ -31,9 +31,10 @@
                                             echo $r['name'];
                                             ?>
                                     </td>
-                                    <td>   <a href="{{ route('service.edit',$s->id) }}" class="teal-text"><i class="fa fa-pencil"></i></a>  {!! Form::open(array('route' =>['service.destroy',$s->id ] , 'method' => 'DELETE','autocomplete'=>'off')) !!}
+                                    <td>   <a href="{{ route('service.edit',$s->id) }}" class="teal-text"><i class="fa fa-pencil"></i></a>
+                                        {!! Form::open(array('route' =>['service.destroy',$s->id ] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp')) !!}
 
-                                        <a type="submit" name="submit" required  class="red-text"><i class="fa fa-times"></i></a>
+                                        <a type="submit" name="submit" onclick="document.getElementById('supp').submit();" class="red-text"><i class="fa fa-times"></i></a>
                                         {!! Form::close() !!}
 
                                     </td>

@@ -32,7 +32,7 @@
 
                     </p>
 
-                    <a type="submit" class="btn btn-success">Enregistrer</a>
+                    <button type="submit" class="btn btn-success">Enregistrer</button>
                     <a href="{{ route('service.index') }}" class="btn btn-danger">Retour</a>
                     {!! Form::close() !!}
 
