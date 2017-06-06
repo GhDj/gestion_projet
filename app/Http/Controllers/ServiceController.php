@@ -29,8 +29,8 @@ class ServiceController extends Controller {
   public function create()
   {
       if (Auth::check()){
-          if (Auth::user()->role==0)
-              $user=User::where('role','=',0)->get();
+          if (Auth::user()->role==1)
+              $user=User::where('role','=',1)->get();
               return view('service.create')->with("user",$user);
 
       }else
@@ -69,7 +69,7 @@ class ServiceController extends Controller {
   public function edit($id)
   {
       $service = Service::findOrFail($id);
-      $user=User::where('role','=',0)->get();
+      $user=User::where('role','=',1)->get();
       return view('service.service')->with(['service' => $service,
                                             'user'=>$user
       ]);
