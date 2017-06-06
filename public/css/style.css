@@ -1,6 +1,11 @@
 
 .logo-wrapper {
-    padding: 0 15%;
+    /*padding: 0 15%;*/
+    padding: 10%;
+}
+
+.double-nav {
+    color: #292b2c;
 }
 
 .nav-wrapper {
@@ -57,71 +62,71 @@
 
 
 .radio-container {
-    clear: both;
-    display: table-cell;
-    margin: 0px 50px;
-    padding: 0px 3%;
+    clear: both !important;
+    display: table-cell !important;
+    margin: 0px 50px !important;
+    padding: 0px 3% !important;
 }
 
 .rd-label{
-    width: 200px;
-    border-radius: 3px;
-    border: 1px solid #D1D3D4;
-    position: relative;
-    float: left;
-    line-height: 2.5em;
-    text-indent: 3.25em;
-    margin-top: 2em;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    width: 200px !important;
+    border-radius: 3px !important;
+    border: 1px solid #D1D3D4 !important;
+    position: relative !important;
+    float: left !important;
+    line-height: 2.5em !important;
+    text-indent: 3.25em !important;
+    margin-top: 2em !important;
+    cursor: pointer !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
 }
 
 input[type=radio]:empty {
-    margin-left: -999px;
-    visibility: hidden;
+    margin-left: -999px !important;
+    visibility: hidden !important;
 }
 
 .rd-label::before {
-    position: absolute;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    content: '';
-    width: 2.5em;
-    background: #D1D3D4;
-    border-radius: 3px 0 0 3px;
+    position: absolute !important;
+    display: block !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    content: '' !important;
+    width: 2.5em !important;
+    background: #D1D3D4 !important;
+    border-radius: 3px 0 0 3px !important;
 }
 
 input[type=radio]:hover:not(:checked) ~ .rd-label:before {
-    content:'\2714';
-    text-indent: .9em;
-    color: #C2C2C2;
+    content:'\2714' !important;
+    text-indent: .9em !important;
+    color: #C2C2C2 !important;
 }
 
 
 input[type=radio]:hover:not(:checked) ~ .rd-label {
-    color: #888;
+    color: #888 !important;
 }
 
 /* toggle on */
 input[type=radio]:checked ~ .rd-label:before {
-    content:'\2714';
-    text-indent: .9em;
-    color: #9CE2AE;
-    background-color: #4DCB6D;
+    content:'\2714' !important;
+    text-indent: .9em !important;
+    color: #9CE2AE !important;
+    background-color: #4DCB6D !important;
 }
 
 input[type=radio]:checked ~ .rd-label {
-    color: #777;
+    color: #777 !important;
 }
 
 /* radio focus */
 input[type=radio]:focus ~ .rd-label:before {
-    box-shadow: 0 0 0 3px #999;
+    box-shadow: 0 0 0 3px #999 !important;
 }
 
 /************************ radio ends here *************/
@@ -143,4 +148,25 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 
 .sidenav li a {
     color: #292b2c;
+}
+
+[type=radio]:checked+label:after {
+    border: 2px solid #06bf51;
+    background-color: #06bf51;
+}
+
+td form {
+    display: inline-block;
+}
+
+.table a {
+    margin-left: 0;
+}
+
+.btn-default {
+    background: #06bf51;
+}
+
+.btn-default:active, .btn-default:focus, .btn-default:hover {
+    background-color: #087c37!important;
 }

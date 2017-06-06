@@ -1,49 +1,55 @@
-@extends('layouts.app')
+@extends('layout')
+
+@section('page-title','Services')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading"> liste des servieces : </div>
 
+    <section class="section">
+        <h1 class="section-heading">Liste des Services</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
 
-@foreach($service as $s)
-                        <div class="panel-body">
-                            <table style="border: 1px solid">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom Service </th>
+                            <th> Chef de service </th>
+                            <th> Actions </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                    @foreach($service as $s)
+
                                 <tr>
-                                    <th  style="border:1px solid">Nom Service </th>
-                                    <th style="border:1px solid"> Chef de service </th>
-                                    <th style="border:1px solid"> Modifier </th>
-                                    <th style="border:1px solid" > Supprimer </th>
-                                </tr>
-                                <tr>
-                                    <td style="border:1px solid">{{ $s->nom_service }}</td>
-                                    <td style="border:1px solid">  {{ $s->chef_service }}
+                                    <td>{{ $s->id }}</td>
+                                    <td>{{ $s->nom_service }}</td>
+                                    <td>
+                                    <?php
+                                            $r = \App\User::where('id','=',$s->chef_service)->first();
+                                            echo $r['name'];
+                                            ?>
+                                    </td>
+                                    <td>   <a href="{{ route('service.edit',$s->id) }}" class="teal-text"><i class="fa fa-pencil"></i></a>  {!! Form::open(array('route' =>['service.destroy',$s->id ] , 'method' => 'DELETE','autocomplete'=>'off')) !!}
+
+                                        <a type="submit" name="submit" required  class="red-text"><i class="fa fa-times"></i></a>
+                                        {!! Form::close() !!}
 
                                     </td>
-                                    <td style="border:1px solid">   <a href="{{ route('service.edit',$s->id) }}">Modifier</a></td>
-                                    <td style="border:1px solid">  {!! Form::open(array('route' =>['service.destroy',$s->id ] , 'method' => 'DELETE','autocomplete'=>'off')) !!}
-
-                                        <button id="submit" type="submit" class="btn red" name="submit" required value="Suppirmer utulisateur">Supprimer</button>{!! Form::close() !!}
-
-                                    </td>
                                 </tr>
-
+                        @endforeach
+                        </tbody>
                             </table>
 
+                    <a href="{{ route('service.create') }}" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Ajouter Service</a>
 
 
-    <br>
-    @endforeach
 
-                    </div>
+                        </div>
                 </div>
             </div>
-            </form>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
+    </section>
+
 @endsection

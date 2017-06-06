@@ -1,45 +1,52 @@
-@extends('layouts.app')
+@extends('layout')
+
+@section('page-title','Services - Ajouter')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading"> Ajouter un service </div>
-                    <div class="panel-body">
+
+    <section class="section">
+        <h1 class="section-heading">Ajouter Service</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel-heading">  </div>
+
 
 
                     {!! Form::open(array('route' => 'service.store', 'method' => 'POST')) !!}
-<ul>
-    <li>
-        {!! Form::label('nom_service', 'Nom_service:') !!}
-        {!! Form::text('nom_service') !!}
-    </li>
-    <li>
-        <label>Chef service : </label>
-       <select name="chef_service">
-           @foreach ($user as $u)
-
-                     <option value="{{ $u->id }}"> {{ $u->name }}  </option>
 
 
-           @endforeach
-
-       </select>
-    </li>
-    <li>
-        {!! Form::token() !!}
-        {!! Form::submit() !!}
-    </li>
-</ul>
-{!! Form::close() !!}
+                    <div class="md-form">
+                        <input type="text" id="nom_service" class="form-control" name="nom_service">
+                        <label for="nom_service">Nom du service</label>
                     </div>
+
+
+
+                    <select name="chef_service" class="mdb-select">
+                        <option disabled selected>Chef Service</option>
+                        @foreach ($user as $u)
+
+                            <option value="{{ $u->id }}"> {{ $u->name }}  </option>
+
+
+                        @endforeach
+
+                    </select>
+                    {!! Form::token() !!}
+                    <button type="submit" class="btn btn-success">Ajouter</button>
+
+                    {!! Form::close() !!}
                 </div>
             </div>
-            </form>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
+    </section>
+
+@endsection
+
+@section('script')
+    $(document).ready(function() {
+    $('.mdb-select').material_select();
+    });
 @endsection
