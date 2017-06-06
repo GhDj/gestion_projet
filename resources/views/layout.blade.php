@@ -55,7 +55,7 @@
 
                 </li>
                 <li> <hr></li>
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="{{ route('service.index') }}"><i class="fa fa-cog"></i> <br> Services </a>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="{{ route('service.index') }}"><i class="fa fa-cog menu-icon"></i> <br> Services </a>
 
                 </li>
                 <li> <hr></li>
