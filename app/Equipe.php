@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Equipe extends Model {
 
     protected $table = 'equipe';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable=['name','id_user'];
 
     public function appartenir()
