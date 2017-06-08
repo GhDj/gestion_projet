@@ -97,6 +97,8 @@ class EquipeUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $e = Equipe_user::where('id','=',"$id")->first();
+        $e->delete();
+        return back();
     }
 }

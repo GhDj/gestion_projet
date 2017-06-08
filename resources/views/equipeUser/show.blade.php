@@ -17,7 +17,12 @@
                         @foreach($equipeuser as $e)
 
                             @if ($e->id_user==$u->id and $e->id_equipe==$id)
-                                <li class="list-group-item">  {{ $u->name }}</li>
+                                <li class="list-group-item"> <div class="col-sm-6">{{ $u->name }}</div>
+                                    {!! Form::open(array('route' =>['equipeUser.destroy',$e->id] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp','class'=>'text-right col-sm-6')) !!}
+
+                                    <a type="submit" name="submit" onclick="document.getElementById('supp').submit();" class="red-text"><i class="fa fa-times"></i></a>
+                                    {!! Form::close() !!}
+                                </li>
                             @endif
 
                         @endforeach
@@ -25,26 +30,32 @@
 
 </ul>
 
-                    {!! Form::open(array('route' => 'equipeUser.store', 'method' => 'POST')) !!}
+
 
 </div>
                 <div class="col-sm-6">
                     <h2 class="section-title">Liste des Employés</h2>
                     <ul class="list-group">
                         @foreach($user as $u1)
-                            <li class="list-group-item" value="{{ $u1->id }}">{{ $u1->name}}</li>
+                            <li class="list-group-item" value="{{ $u1->id }}">
+                                <div class="col-sm-6">
+                                    {{ $u1->name}}
+                                </div>
+                                {!! Form::open(array('route' => 'equipeUser.store', 'method' => 'POST','id'=>'add','class'=>'col-sm-6 text-right')) !!}
+
+
+                                <input type="hidden" name="id_equipe" value="{{ $id }}">
+
+                                <a type="submit" name="submit" onclick="document.getElementById('add').submit();" class="green-text"><i class="fa fa-plus"></i></a>
+
+                                {!! Form::close() !!}
+                            </li>
 
                         @endforeach
                     </ul>
-                    <input type="hidden" name="id_equipe" value="{{ $id }}">
 
-                    {!! Form::submit() !!}
-                    @if (count($errors) > 0) <div class="alert alert-danger"> <ul>
-                            @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach
-                        </ul> </div> @endif
-                    {!! Form::close() !!}
 
-                    <a href="#" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Ajouter membre</a>
+                   <!-- <a href="#" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Ajouter membre</a>-->
 
 
 

@@ -73,7 +73,9 @@ Route::get('/test',function (){
    return view('index');
 });
 
-
+Route::get('/connexion',function () {
+   return view('connexion');
+});
 
 
 
