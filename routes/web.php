@@ -29,14 +29,16 @@ Route::get('/projet/modules/tache/consommable/create/{id}', 'consommableControll
 
 
 
+Route::group(['middleware' => ['web']], function () {
 
+    Route::resource('equipeUser', 'equipeUserController');
+});
 
 Route::resource('projet', 'projetController');
 Route::resource('service', 'serviceController');
 Route::resource('modules', 'modulesController');
 Route::resource('tache', 'tacheController');
 Route::resource('equipe', 'equipeController');
-Route::resource('equipeUser', 'equipeUserController');
 Route::resource('materiel', 'materielController');
 Route::resource('logistique', 'logistiqueController');
 Route::resource('consommable', 'consommableController');

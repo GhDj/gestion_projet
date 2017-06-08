@@ -12,7 +12,7 @@
 
                         <h2 class="section-title">Liste des membres</h2>
 
-                    <ul class="list-group">
+                    <ul class="list-group" id="member-list">
                     @foreach($user as $u)
                         @foreach($equipeuser as $e)
 
@@ -43,10 +43,12 @@
                                 </div>
                                 {!! Form::open(array('route' => 'equipeUser.store', 'method' => 'POST','id'=>'add','class'=>'col-sm-6 text-right')) !!}
 
+                                <input type="hidden" id="id_user" name="id_user" value="{{ $u1->id }}">
+                                <input type="hidden" id="id_equipe" name="id_equipe" value="{{ $id }}">
 
-                                <input type="hidden" name="id_equipe" value="{{ $id }}">
+                                <a type="submit" name="submit" class="green-text" id="btn-add"><i class="fa fa-plus"></i></a>
 
-                                <a type="submit" name="submit" onclick="document.getElementById('add').submit();" class="green-text"><i class="fa fa-plus"></i></a>
+                                {{ csrf_field() }}
 
                                 {!! Form::close() !!}
                             </li>
@@ -64,5 +66,74 @@
         </div>
 
     </section>
+
+@endsection
+
+@section('script')
+
+        $(document).ready(function(){
+
+            var url = "/equipeUser";
+
+
+            //create new task / update existing task
+            $("#btn-add").click(function (e) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                e.preventDefault();
+
+                var formData = {
+                    id_equipe: $('#id_equipe').val(),
+                    id_user: $('#id_user').val()
+                };
+
+                //used to determine the http verb to use [add=POST], [update=PUT]
+                var state = "add";
+
+                var type = "POST"; //for creating new resource
+            //    var task_id = $('#task_id').val();
+                var my_url = url;
+
+
+                console.log(formData);
+
+                $.ajax({
+
+                    type: type,
+                    url: my_url,
+                    data: formData,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+
+                     /*   var task = '<tr id="task' + data.id + '"><td>' + data.id + '</td><td>' + data.task + '</td><td>' + data.description + '</td><td>' + data.created_at + '</td>';
+                        task += '<td><button class="btn btn-warning btn-xs btn-detail open-modal" value="' + data.id + '">Edit</button>';
+                        task += '<button class="btn btn-danger btn-xs btn-delete delete-task" value="' + data.id + '">Delete</button></td></tr>';*/
+
+        var member = '<li class="list-group-item"> <div class="col-sm-6">{{ \App\User::where("id","=",'+data.id_user+')->first() }}</div>';
+            member+= '{!! Form::open(array('route' =>['equipeUser.destroy','+ data.idType +'] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp','class'=>'text-right col-sm-6')) !!}';
+
+            member+=  '<a type="submit" name="submit" onclick="document.getElementById("supp").submit();" class="red-text"><i class="fa fa-times"></i></a>';
+            member+=  '{!! Form::close() !!}';
+            member+=  ' </li>';
+
+
+
+                      if (state == "add"){ //if user added a new record
+                       //     $('#member-list').append(member);
+        }
+        location.reload();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+
+                });
+            });
+        });
 
 @endsection

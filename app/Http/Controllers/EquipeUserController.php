@@ -51,7 +51,9 @@ class EquipeUserController extends Controller
             'id_user'=>$request->input('id_user')
 
         ]);
-        return redirect()->route('equipe.show',['id'=>$request->input('id_equipe')]);
+      //  return redirect()->route('equipe.show',['id'=>$request->input('id_equipe')]);
+
+        return \Response::json($n);
 
     }
 
