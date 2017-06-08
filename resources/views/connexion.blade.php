@@ -277,8 +277,9 @@
     </style>
 </head>
 <body>
+<canvas></canvas>
 <div id="container">
-    <canvas></canvas>
+
     <form id="form-login" role="form" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
     <div class="inputbox">
