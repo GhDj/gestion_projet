@@ -205,3 +205,18 @@ li form {
         transform: rotate(0deg) skewY(0deg);
     }
 }
+
+.list-group-item {
+    text-transform: capitalize;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #06bf51 !important;
+    border-radius: 0;
+}
+
+.dropdown .dropdown-menu {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}

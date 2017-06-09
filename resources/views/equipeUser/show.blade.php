@@ -36,24 +36,61 @@
                 <div class="col-sm-6">
                     <h2 class="section-title">Liste des Employés</h2>
                     <ul class="list-group">
+                        @if($equipeuser->count() != 0)
+                            <?php $c = []; ?>
+                                @foreach($equipeuser as $e1)
+                                    <?php
+
+                                        array_push($c,$e1->id_user);
+
+                                    ?>
+                                @endforeach
                         @foreach($user as $u1)
-                            <li class="list-group-item" value="{{ $u1->id }}">
-                                <div class="col-sm-6">
-                                    {{ $u1->name}}
-                                </div>
-                                {!! Form::open(array('route' => 'equipeUser.store', 'method' => 'POST','id'=>'add','class'=>'col-sm-6 text-right')) !!}
+                            @foreach($equipeuser as $e1)
 
-                                <input type="hidden" id="id_user" name="id_user" value="{{ $u1->id }}">
-                                <input type="hidden" id="id_equipe" name="id_equipe" value="{{ $id }}">
+                                @if(!(in_array($u1->id,$c)))
 
-                                <a type="submit" name="submit" class="green-text" id="btn-add"><i class="fa fa-plus"></i></a>
+                                    <li class="list-group-item" value="{{ $u1->id }}">
+                                        <div class="col-sm-6">
+                                            {{ $u1->name}}
+                                        </div>
+                                        {!! Form::open(array('route' => 'equipeUser.store', 'method' => 'POST','id'=>'add','class'=>'col-sm-6 text-right')) !!}
 
-                                {{ csrf_field() }}
+                                        <input type="hidden" id="id_user-{{ $u1->id }}" name="id_user" value="{{ $u1->id }}">
+                                        <input type="hidden" id="id_equipe-{{ $u1->id }}" name="id_equipe" value="{{ $id }}">
 
-                                {!! Form::close() !!}
-                            </li>
+                                        <a type="submit" name="submit" class="green-text" id="btn-add-{{ $u1->id }}"><i class="fa fa-plus"></i></a>
+
+                                        {{ csrf_field() }}
+
+                                        {!! Form::close() !!}
+                                    </li>
+                                @endif
+
+                            @endforeach
 
                         @endforeach
+                            @else
+                            @foreach($user as $u1)
+
+                                        <li class="list-group-item" value="{{ $u1->id }}">
+                                            <div class="col-sm-6">
+                                                {{ $u1->name}}
+                                            </div>
+                                            {!! Form::open(array('route' => 'equipeUser.store', 'method' => 'POST','id'=>'add','class'=>'col-sm-6 text-right')) !!}
+
+                                            <input type="hidden" id="id_user-{{ $u1->id }}" name="id_user" value="{{ $u1->id }}">
+                                            <input type="hidden" id="id_equipe-{{ $u1->id }}" name="id_equipe" value="{{ $id }}">
+
+                                            <a type="submit" name="submit" class="green-text" id="btn-add-{{ $u1->id }}"><i class="fa fa-plus"></i></a>
+
+                                            {{ csrf_field() }}
+
+                                            {!! Form::close() !!}
+                                        </li>
+                                @endforeach
+
+                        @endif
                     </ul>
 
 
@@ -70,49 +107,49 @@
 @endsection
 
 @section('script')
-
+    @foreach($user as $u1)
         $(document).ready(function(){
 
-            var url = "/equipeUser";
+        var url = "/equipeUser";
 
 
-            //create new task / update existing task
-            $("#btn-add").click(function (e) {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    }
-                });
+        //create new task / update existing task
+        $("#btn-add-{{ $u1->id }}").click(function (e) {
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+        });
 
-                e.preventDefault();
+        e.preventDefault();
 
-                var formData = {
-                    id_equipe: $('#id_equipe').val(),
-                    id_user: $('#id_user').val()
-                };
+        var formData = {
+        id_equipe: $('#id_equipe-{{ $u1->id }}').val(),
+        id_user: $('#id_user-{{ $u1->id }}').val()
+        };
 
-                //used to determine the http verb to use [add=POST], [update=PUT]
-                var state = "add";
+        //used to determine the http verb to use [add=POST], [update=PUT]
+        var state = "add";
 
-                var type = "POST"; //for creating new resource
-            //    var task_id = $('#task_id').val();
-                var my_url = url;
+        var type = "POST"; //for creating new resource
+        //    var task_id = $('#task_id').val();
+        var my_url = url;
 
 
-                console.log(formData);
+        console.log(formData);
 
-                $.ajax({
+        $.ajax({
 
-                    type: type,
-                    url: my_url,
-                    data: formData,
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data);
+        type: type,
+        url: my_url,
+        data: formData,
+        dataType: 'json',
+        success: function (data) {
+        console.log(data);
 
-                     /*   var task = '<tr id="task' + data.id + '"><td>' + data.id + '</td><td>' + data.task + '</td><td>' + data.description + '</td><td>' + data.created_at + '</td>';
-                        task += '<td><button class="btn btn-warning btn-xs btn-detail open-modal" value="' + data.id + '">Edit</button>';
-                        task += '<button class="btn btn-danger btn-xs btn-delete delete-task" value="' + data.id + '">Delete</button></td></tr>';*/
+        /*   var task = '<tr id="task' + data.id + '"><td>' + data.id + '</td><td>' + data.task + '</td><td>' + data.description + '</td><td>' + data.created_at + '</td>';
+            task += '<td><button class="btn btn-warning btn-xs btn-detail open-modal" value="' + data.id + '">Edit</button>';
+                task += '<button class="btn btn-danger btn-xs btn-delete delete-task" value="' + data.id + '">Delete</button></td></tr>';*/
 
         var member = '<li class="list-group-item"> <div class="col-sm-6">{{ \App\User::where("id","=",'+data.id_user+')->first() }}</div>';
             member+= '{!! Form::open(array('route' =>['equipeUser.destroy','+ data.idType +'] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp','class'=>'text-right col-sm-6')) !!}';
@@ -123,17 +160,20 @@
 
 
 
-                      if (state == "add"){ //if user added a new record
-                       //     $('#member-list').append(member);
+        if (state == "add"){ //if user added a new record
+        //     $('#member-list').append(member);
         }
         location.reload();
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
+        },
+        error: function (data) {
+        console.log('Error:', data);
+        }
 
-                });
-            });
         });
+        });
+        });
+    @endforeach
+
+
 
 @endsection

@@ -86,8 +86,21 @@
                     <li class="nav-item">
                         <a class="nav-link"><i class="fa fa-bell" aria-hidden="true"></i> Notifications</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                        <div  class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>  Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+
+                        </div>
                     </li>
 
                 </ul>
