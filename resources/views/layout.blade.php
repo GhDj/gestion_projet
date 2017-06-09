@@ -40,7 +40,7 @@
 
                 </li>
                 <li><hr></li>
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-file-text-o  menu-icon"></i> <br> Projets</a>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="{{ route('projet.index') }}"><i class="fa fa-file-text-o  menu-icon"></i> <br> Projets</a>
                 </li>
                 <li><hr></li>
                 <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-files-o  menu-icon"></i> <br> Rapports</a>
@@ -51,7 +51,7 @@
 
                 </li>
                 <li> <hr></li>
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="{{ route('user.index') }}"><i class="fa fa-user  menu-icon"></i> <br> Employés </a>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="{{ route('equipe.index') }}"><i class="fa fa-user  menu-icon"></i> <br> Employés </a>
 
                 </li>
                 <li> <hr></li>
