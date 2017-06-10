@@ -27,12 +27,25 @@
             -webkit-box-shadow: 0 0 0 1000px white inset;
         }
 
+        body::before {
+            content:"";
+            display: block;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, .7);
+        }
+
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
             font-family: 'Open Sans', sans-serif;
-            background: #000000;
+            background-color: rgba(0,0,0,0.5);
+            background-image: url({{ asset('img/login-bg.jpg') }});
+            background-size: cover;
         }
 
 
@@ -278,8 +291,13 @@
 </head>
 <body>
 <canvas></canvas>
+<div id="logo">
+    <img src="{{ asset('img/logo.png') }}" alt="">
+</div>
 <div id="container">
 
+
+    
     <form id="form-login" role="form" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
         <div class="inputbox">
