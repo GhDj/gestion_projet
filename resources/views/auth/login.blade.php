@@ -321,7 +321,7 @@
             </div>
             <div class="face top">
                 <div class="email"></div>
-                <input type="text" name="email" placeholder="e-mail" autocorrect="off"/>
+                <!--<input type="text" name="email" placeholder="e-mail" autocorrect="off"/>-->
                 <div class="submit"></div>
             </div>
             <div class="face back">
