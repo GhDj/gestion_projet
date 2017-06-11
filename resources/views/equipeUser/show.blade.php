@@ -46,7 +46,7 @@
                                     ?>
                                 @endforeach
                         @foreach($user as $u1)
-                            @foreach($equipeuser as $e1)
+                           {{--  @foreach($equipeuser as $e1) --}}
 
                                 @if(!(in_array($u1->id,$c)))
 
@@ -69,7 +69,7 @@
 
                             @endforeach
 
-                        @endforeach
+                        {{-- @endforeach --}}
                             @else
                             @foreach($user as $u1)
 

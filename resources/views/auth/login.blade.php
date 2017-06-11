@@ -287,6 +287,19 @@
         canvas {
             position: absolute;
         }
+
+        #logo {
+            position: relative;
+            text-align: center;
+            width: 35%;
+            margin: auto;
+            padding-top: 5%;
+        }
+
+        #logo img {
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>

@@ -37,14 +37,16 @@
                                     {!! Form::text('budget') !!}
                                 </div>
 
-                                <div class="md-form col-sm-5">
-                                    {!! Form::label('date_debut', 'Date Debut:') !!}
-                                    {!! Form::text('date_debut',null,['class'=>'form-control datepicker']) !!}
-                                </div>
+                                <div class="form-inline col-sm-12">
+                                    <div class="md-form form-group col-sm-5">
+                                        {!! Form::label('date_debut', 'Date Debut:') !!}
+                                        {!! Form::text('date_debut',null,['class'=>'form-control datepicker']) !!}
+                                    </div>
 
-                                <div class="md-form col-sm-6">
-                                    {!! Form::label('date_fin', 'Date Fin:') !!}
-                                    {!! Form::text('date_fin',null,['class'=>'form-control datepicker']) !!}
+                                    <div class="md-form form-group col-sm-5">
+                                        {!! Form::label('date_fin', 'Date Fin:') !!}
+                                        {!! Form::text('date_fin',null,['class'=>'form-control datepicker']) !!}
+                                    </div>
                                 </div>
 
                                 <div class="md-form">

@@ -17,8 +17,17 @@ class EquipeController extends Controller
      */
     public function index()
     {
-        $equipe=Equipe::all();
-        return view('equipe.index')->with('equipe',$equipe);
+        if (Auth::check()) {
+            if (Auth::user()->role == 1) {
+
+                $equipe = Equipe::all();
+            return view('equipe.index')->with('equipe', $equipe);
+            }
+        }else
+        {
+            return redirect('home');
+        }
+
 
     }
 
@@ -30,12 +39,13 @@ class EquipeController extends Controller
     public function create()
     {
         if (Auth::check()) {
-            if (Auth::user()->role == 1)
-                $user=User::all();
-                return view('equipe.create')->with('user',$user);
+            if (Auth::user()->role == 1) {
+                $user = User::all();
+            return view('equipe.create')->with('user', $user);
+        }
         }else
         {
-            echo "deconnecter";
+            return redirect('home');
         }
     
     }
@@ -63,17 +73,24 @@ class EquipeController extends Controller
      */
     public function show($id)
     {
-        $user=User::all();
-        $equipeuser=Equipe_user::all();
-        $users=Equipe_user::where("id_equipe","<>",$id)->get() ;
-        $nonequipe = [];
+        if (Auth::check()) {
+            if (Auth::user()->role == 1) {
+                $user = User::all();
+                $equipeuser = Equipe_user::all();
+                $users = Equipe_user::where("id_equipe", "<>", $id)->get();
+                $nonequipe = [];
 
-     //   dd($users);
-        return view("equipeUser.show")->with(['user'=>$user,
-                                                'id'=>$id,
-                                        'users'=>$users,
-                                                'equipeuser'=>$equipeuser
-        ]);
+                //   dd($users);
+                return view("equipeUser.show")->with(['user' => $user,
+                    'id' => $id,
+                    'users' => $users,
+                    'equipeuser' => $equipeuser
+                ]);
+            }
+        }else
+        {
+            return redirect('home');
+        }
     }
 
     /**

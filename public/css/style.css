@@ -220,3 +220,7 @@ li form {
     padding: 0;
     border-radius: 0;
 }
+
+.card .form-header {
+    padding: 0.5rem;
+}
