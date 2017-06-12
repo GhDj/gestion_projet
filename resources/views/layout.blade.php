@@ -13,6 +13,9 @@
     <title>
         Connect Project - @yield('title')
     </title>
+
+    @yield('header-script')
+
 </head>
 <body class="grey lighten-5">
 

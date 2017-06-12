@@ -1,5 +1,6 @@
 @extends('layout')
 
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -84,15 +85,26 @@
                                 @endforeach
 
                             </select><br>-->
-                            <label> Ajouter fichier: </label>
-                            {!! Form::file('fichier[]',['multiple'=>true]) !!}
 
-                            <li>
+                        <div class="box">
+                            <div class="box__input">
+                                <input class="box__file" type="file" name="fichier[]" id="file" data-multiple-caption="{count} fichiers sélectionnés" multiple required/>
+                                <label for="file"><strong>Choisir des fichiers</strong><span class="box__dragndrop"> ou déposer ici.</span>.</label>
+                            </div>
+                            <div class="box__uploading">Uploading&hellip;</div>
+                            <div class="box__success">Done!</div>
+                            <div class="box__error">Error! <span></span>.</div>
+                        </div>
+
+
+                    <!--  <label> Ajouter fichier: </label>
+                          {!! Form::file('fichier[]',['multiple'=>true]) !!}-->
+
+
+
                                 {!! Form::token() !!}
-                                {!! Form::submit() !!}
-                            </li>
+                        <button class="btn btn-success pull-right" type="submit">Créer</button>
 
-                        </ul>
                         {!! Form::close() !!}
 
                     </div>
@@ -156,6 +168,62 @@
 
 @section('script')
 
+    var $form = $('.box');
+    var isAdvancedUpload = function() {
+    var div = document.createElement('div');
+    return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
+    }();
+
+    if (isAdvancedUpload) {
+
+    var $input    = $form.find('input[type="file"]'),
+    $label    = $form.find('label'),
+    showFiles = function(files) {
+    $label.text(files.length > 1 ? ($input.attr('data-multiple-caption') || '').replace( '{count}', files.length ) : files[ 0 ].name);
+    }
+            $form.addClass('has-advanced-upload');
+            var droppedFiles = false;
+
+            $form.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            })
+            .on('dragover dragenter', function() {
+            $form.addClass('is-dragover');
+            })
+            .on('dragleave dragend drop', function() {
+            $form.removeClass('is-dragover');
+            })
+            .on('drop', function(e) {
+            droppedFiles = e.originalEvent.dataTransfer.files;
+            droppedFiles = e.originalEvent.dataTransfer.files; // the files that were dropped
+            showFiles( droppedFiles );
+                $input.on('change', function(e) {
+                showFiles(e.target.files);
+                });
+            });
+
+            var ajaxData = new FormData($form.get(0));
+
+            if (droppedFiles) {
+            $.each( droppedFiles, function(i, file) {
+            ajaxData.append( $input.attr('name'), file );
+            });
+            };
+    $input.on('change', function(e) {
+    showFiles(e.target.files);
+    });
+
+    // ...
+
+
+    //...
+
+
+    };
+
+
+
     $('.datepicker').pickadate({
     monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
     weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
@@ -174,5 +242,6 @@
     $('#id_service').val($(this).attr('value'));
     $('#selected-service').text($(this).text());
     });
+
 
 @endsection
