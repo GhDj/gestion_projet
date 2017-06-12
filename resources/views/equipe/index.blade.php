@@ -15,7 +15,7 @@
                         @foreach( $equipe as $e)
                             <a href="{{ route('equipe.show',['id'=>$e->id])  }}" class="list-group-item justify-content-between">
                                 {{ $e->name }}
-                                <span class="badge badge-success badge-pill">14</span>
+                                <span class="badge badge-success badge-pill">{{ \App\Equipe_user::where('id_equipe','=',$e->id)->count() }}</span>
                             </a>
                         @endforeach
                     </div>
@@ -42,7 +42,7 @@
                     <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="title"><i class="fa fa-newspaper-o"></i>Créer équipe</h4>
+                    <h4 class="title">Créer équipe</h4>
                 </div>
                 <!--Body-->
                 <div class="modal-body mb-0">

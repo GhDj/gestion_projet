@@ -16,9 +16,25 @@ class ServiceController extends Controller {
    */
   public function index()
   {
-      $service = Service::all();
-      $user=User::all();
-      return view('service.index')->with('service',$service);
+      if (Auth::check()){
+          if (Auth::user()->role==1) {
+              $service = Service::all();
+              $user=User::where('role','=',1)->get();
+              return view('service.index')->with([
+                  "user"=>$user,
+                  "service" => $service
+              ]);
+              }else {
+                  return back();}
+
+          }
+
+          else {
+          return redirect('login');
+      }
+
+
+
   }
 
   /**
@@ -30,8 +46,11 @@ class ServiceController extends Controller {
   {
       if (Auth::check()){
           if (Auth::user()->role==1)
+          {
+
               $user=User::where('role','=',1)->get();
               return view('service.create')->with("user",$user);
+          }
 
       }else
           return back();
