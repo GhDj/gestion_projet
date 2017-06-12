@@ -88,7 +88,7 @@
 
                         <div class="box">
                             <div class="box__input">
-                                <input class="box__file" type="file" name="fichier[]" id="file" data-multiple-caption="{count} fichiers sélectionnés" multiple required/>
+                                <input class="box__file" type="file" name="fichier[]" id="file" data-multiple-caption="{count} fichiers sélectionnés" multiple/>
                                 <label for="file"><strong>Choisir des fichiers</strong><span class="box__dragndrop"> ou déposer ici.</span>.</label>
                             </div>
                             <div class="box__uploading">Uploading&hellip;</div>

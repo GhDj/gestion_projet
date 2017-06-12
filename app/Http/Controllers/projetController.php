@@ -94,9 +94,10 @@ class projetController extends Controller {
     $projet->id_equipe=$request->input('id_equipe');
     $projet->etat=1;
 
-    $projet->save();
+      $projet->save();
 
       $files=$request->file('fichier');
+     // dd($files);
       foreach ($files as $f)
       {
           $f->storeAs('fichiersProjet',$f->getClientOriginalName(),'public');

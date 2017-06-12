@@ -167,6 +167,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
+        DamianTW\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
 
         /*
