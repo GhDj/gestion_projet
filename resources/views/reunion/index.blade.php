@@ -53,7 +53,6 @@
                     </table>
 
          <a href="{{ route('reunion.create') }}" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Planifier réunion</a>
-                    <a href="#" data-toggle="modal" data-target="#modalSubscription" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Planifier réunion</a>
 
 
                 </div>

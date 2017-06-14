@@ -38,6 +38,10 @@ class ReunionUserController extends Controller
     public function store(Request $request)
     {
         $e=Reunion_user::create($request->all());
+       /* $e = Reunion_user::create([
+            'id_user' => $request->input('id_user'),
+            'id_reunion' => $request->input('id_reunion')
+        ]);*/
       /*  $n=Notification::create([
             'idType'=>$e->id_reunion,
             'type'=>'reunion',

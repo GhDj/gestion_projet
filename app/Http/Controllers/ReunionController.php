@@ -68,7 +68,7 @@ class ReunionController extends Controller {
             $test=true;
         }
     }
-    if (!$test){
+    if ($test){
 
         //dd($ru);
 

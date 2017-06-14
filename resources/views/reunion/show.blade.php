@@ -39,7 +39,8 @@
 
                         @foreach($user as $u)
                             @if((in_array($u->id,$c)))
-                                    <li class="list-group-item"> <div class="col-sm-6">{{ $u->name }}</div>
+                                    <li class="list-group-item">
+                                        <div class="col-sm-6">{{ $u->name }}</div>
                                         {!! Form::open(array('route' =>['reunionUser.destroy',$r->id] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp','class'=>'text-right col-sm-6')) !!}
 
                                         <a type="submit" name="submit" onclick="document.getElementById('supp').submit();" class="red-text"><i class="fa fa-times"></i></a>
@@ -57,8 +58,6 @@
 
 
                     @if(\Illuminate\Support\Facades\Auth::user()->role==1)
-                        {!! Form::open(array('route' => 'reunionUser.store', 'method' => 'POST')) !!}
-
 
                         <ul class="list-group">
                             @foreach($user as $u)
@@ -83,13 +82,8 @@
 
                         </ul>
 
-                        <select name="id_user" class="mdb-select">
-                        </select>
 
 
-                        <input type="hidden" name="id_reunion" value="{{ $id }}">
-                        {!! Form::submit() !!}
-                        {!! Form::close() !!}
 
                         <a href="/reunion/{{ $r->id }}/edit"> Modifier</a>
                     @endif
