@@ -278,3 +278,15 @@ li form {
 .droppable.dragover { background: #00CC71; }
 .droppable input {display: none;}
 /*************** End upload file *************/
+
+#member-reunion-list {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow : none;
+}
+
+#member-reunion-list li.list-group-item {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+}

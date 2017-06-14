@@ -113,8 +113,4 @@
 
 
     $('#myModal').modal();
-    $(document).ready(function() {
-    $('.mdb-select').material_select();
-    });
-
 @endsection

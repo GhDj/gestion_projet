@@ -44,9 +44,3 @@
     </section>
 
 @endsection
-
-@section('script')
-    $(document).ready(function() {
-    $('.mdb-select').material_select();
-    });
-@endsection

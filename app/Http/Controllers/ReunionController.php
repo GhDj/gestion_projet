@@ -62,14 +62,15 @@ class ReunionController extends Controller {
       $r=Reunion::findOrFail($id);
       $user=User::all();
       $ru=Reunion_user::where('id_reunion','=',$id)->get();
-        $test=false;
+      $test=false;
       foreach ($ru as $item){
         if (Auth::user()->id==$item->id_user){
             $test=true;
         }
     }
-    if ($test){
+    if (!$test){
 
+        //dd($ru);
 
       return view("reunion.show")->with(["r"=>$r,
                                         "user"=>$user,
@@ -112,6 +113,7 @@ class ReunionController extends Controller {
    */
   public function destroy($id)
   {
+
     
   }
   

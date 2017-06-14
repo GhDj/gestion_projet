@@ -38,14 +38,15 @@ class ReunionUserController extends Controller
     public function store(Request $request)
     {
         $e=Reunion_user::create($request->all());
-        $n=Notification::create([
+      /*  $n=Notification::create([
             'idType'=>$e->id_reunion,
             'type'=>'reunion',
             'lu'=>0,
             'id_user'=>$request->input('id_user')
 
-        ]);
-        return redirect()->route('reunion.show',['id'=>$request->input('id_reunion')]);
+        ]);*/
+      //  return redirect()->route('reunion.show',['id'=>$request->input('id_reunion')]);
+        return back();
 
     }
 
@@ -91,6 +92,8 @@ class ReunionUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $e = Reunion_user::where('id','=',"$id")->first();
+        $e->delete();
+        return back();
     }
 }

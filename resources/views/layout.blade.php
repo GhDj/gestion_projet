@@ -130,7 +130,9 @@
     $('nav').css('padding-left',$('#side-nav').width()+40);
     $('#page-wrapper').css('padding-left',$('#side-nav').width());
     $(".button-collapse").sideNav();
-
+    $(document).ready(function() {
+        $('.mdb-select').material_select();
+    });
     $('.datepicker').pickadate({
         monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
         weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
