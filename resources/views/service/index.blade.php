@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title','Services')
+
 @section('page-title','Services')
 
 @section('content')

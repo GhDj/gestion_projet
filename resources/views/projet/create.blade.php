@@ -1,5 +1,10 @@
 @extends('layout')
 
+@section('header-script')
+
+    <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
+
+@endsection
 
 @section('content')
     <div class="container">
@@ -17,7 +22,7 @@
 
 
 
-                        {!! Form::open(array('route' => 'projet.store', 'method' => 'POST', 'enctype'=>'multipart/form-data')) !!}
+                        {!! Form::open(array('route' => 'projet.store', 'method' => 'POST', 'enctype'=>'multipart/form-data','class'=>'box')) !!}
 
 
                                 <div class="md-form">
@@ -86,19 +91,14 @@
 
                             </select><br>-->
 
-                        <div class="box">
-                            <div class="box__input">
-                                <input class="box__file" type="file" name="fichier[]" id="file" data-multiple-caption="{count} fichiers sélectionnés" multiple/>
-                                <label for="file"><strong>Choisir des fichiers</strong><span class="box__dragndrop"> ou déposer ici.</span>.</label>
-                            </div>
-                            <div class="box__uploading">Uploading&hellip;</div>
-                            <div class="box__success">Done!</div>
-                            <div class="box__error">Error! <span></span>.</div>
+                        <div class="box__input droppable">
+                            Choisir vos fichiers ou déplacer les fichiers ici.
+                            <input class="box__file" type="file" name="fichier[]" id="file" multiple required />
+                            <div id="label"></div>
+
                         </div>
 
 
-                    <!--  <label> Ajouter fichier: </label>
-                          {!! Form::file('fichier[]',['multiple'=>true]) !!}-->
 
 
 
@@ -168,69 +168,68 @@
 
 @section('script')
 
-    var $form = $('.box');
-    var isAdvancedUpload = function() {
-    var div = document.createElement('div');
-    return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
-    }();
 
-    if (isAdvancedUpload) {
-
-    var $input    = $form.find('input[type="file"]'),
-    $label    = $form.find('label'),
-    showFiles = function(files) {
-    $label.text(files.length > 1 ? ($input.attr('data-multiple-caption') || '').replace( '{count}', files.length ) : files[ 0 ].name);
+    function triggerCallback(e) {
+    var files;
+    if(e.dataTransfer) {
+    files = e.dataTransfer.files;
+    } else if(e.target) {
+    files = e.target.files;
     }
-            $form.addClass('has-advanced-upload');
-            var droppedFiles = false;
+    callback.call(null, files);
+    }
 
-            $form.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            })
-            .on('dragover dragenter', function() {
-            $form.addClass('is-dragover');
-            })
-            .on('dragleave dragend drop', function() {
-            $form.removeClass('is-dragover');
-            })
-            .on('drop', function(e) {
-            droppedFiles = e.originalEvent.dataTransfer.files;
-            droppedFiles = e.originalEvent.dataTransfer.files; // the files that were dropped
-            showFiles( droppedFiles );
-                $input.on('change', function(e) {
-                showFiles(e.target.files);
-                });
-            });
+    function makeDroppable(element, callback) {
 
-            var ajaxData = new FormData($form.get(0));
+    var input = document.getElementById('file');
 
-            if (droppedFiles) {
-            $.each( droppedFiles, function(i, file) {
-            ajaxData.append( $input.attr('name'), file );
-            });
-            };
-    $input.on('change', function(e) {
-    showFiles(e.target.files);
+    input.addEventListener('change', triggerCallback);
+    element.appendChild(input);
+
+    element.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        element.classList.add('dragover');
     });
 
-    // ...
-
-
-    //...
-
-
-    };
-
-
-
-    $('.datepicker').pickadate({
-    monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-    weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-    today: 'aujourd\'hui',
-    clear: 'effacer',
-    formatSubmit: 'yyyy/mm/dd'
+    element.addEventListener('dragleave', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    element.classList.remove('dragover');
     });
+
+    element.addEventListener('drop', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    element.classList.remove('dragover');
+    triggerCallback(e);
+    });
+
+    element.addEventListener('click', function() {
+    input.click();
+    });
+
+    function triggerCallback(e) {
+    var files;
+    if(e.dataTransfer) {
+        files = e.dataTransfer.files;
+        $('#label').text(files.length+" fichier(s) sélectionnée(s)");
+    } else if(e.target) {
+        files = e.target.files;
+        $('#label').text(files.length+" fichier(s) sélectionnée(s)");
+    }
+    callback.call(null, files);
+    }
+    }
+
+    var element = document.querySelector('.droppable');
+    function callback(files) {
+    // Here, we simply log the Array of files to the console.
+    console.log(files);
+    }
+    makeDroppable(element, callback);
+
+
 
         $('#equipe-list .list-group .list-group-item ').click(function (e) {
             $('#id_equipe').val($(this).attr('value'));

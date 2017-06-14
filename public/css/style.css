@@ -274,34 +274,7 @@ li form {
 }
 
 /************** Upload file *************/
-
-.box__dragndrop,
-.box__uploading,
-.box__success,
-.box__error {
-    display: none;
-}
-
-.box{
-    outline: 2px dashed #92b0b3;
-    outline-offset: -10px;
-    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    font-size: 1.25rem;
-    position: relative;
-    padding: 100px 20px;
-
-}
-.has-advanced-upload .box__dragndrop {
-    display: inline;
-}
-
-.box.is-dragover {
-    background-color: grey;
-}
-
-input[type=file] {
-    display: none;
-}
-
+.droppable { background: #08c; color: #fff; padding: 100px 0; text-align: center; }
+.droppable.dragover { background: #00CC71; }
+.droppable input {display: none;}
 /*************** End upload file *************/

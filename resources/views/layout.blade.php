@@ -23,7 +23,7 @@
 <div class="row">
 <div id="side-nav" class="col col-sm-2">
 <div class="container">
-    <ul id="slide-out">
+    <ul id="slide-out" >
         <!--  <ul id="slide-out" class="side-nav fixed sn-bg-1 custom-scrollbar ps-container ps-theme-default" data-ps-id="b15ceb99-3614-8113-35dd-347d90a2d0f4" style="transform: translateX(0%);"> -->
         <!-- Logo -->
         <li>
@@ -129,6 +129,16 @@
 
     $('nav').css('padding-left',$('#side-nav').width()+40);
     $('#page-wrapper').css('padding-left',$('#side-nav').width());
+    $(".button-collapse").sideNav();
+
+    $('.datepicker').pickadate({
+        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        today: 'aujourd\'hui',
+        clear: 'effacer',
+        formatSubmit: 'yyyy/mm/dd'
+    });
+
     @yield('script')
 </script>
 
