@@ -4,6 +4,13 @@
 
 @section('page-title','Réunions')
 
+@section('header-script')
+
+    <link rel="stylesheet" href="{{ asset('css/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fullcalendar.print.css') }}">
+
+@endsection
+
 @section('content')
 
 
@@ -11,13 +18,12 @@
         <h1 class="section-heading">Liste des Réunions</h1>
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-6">
 
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Code d'affire</th>
                             <th>Empalcement</th>
                             <th> Date </th>
                             <th> Actions</th>
@@ -28,20 +34,26 @@
                         @foreach($reunion as $s)
 
                             <tr>
-                                <td>{{ $s->id }}</td>
-                                <td>{{ $s->code_afaire }}</td>
+                                <td><a href="{{ route('reunion.show',['id'=>$s->id]) }}">{{ $s->id }}</a></td>
                                 <td>{{ $s->Emplacement }}</td>
                                 <td>
                                     <?php
-                                        \Carbon\Carbon::setLocale('fr')
+                                        \Carbon\Carbon::setLocale('fr');
+                                        $date = explode(" ",$s->dateReunion);
+                                       // print_r($date);
+                                        $d = $date[0];
+                                        $m = rtrim($date[1],",");
+
+                                        $y = $date[2];
+                                        $dd = $d." ".$m." ".$y;
                                     ?>
                                     {{ $s->dateReunion }}
 
                                 </td>
-                                <td>   <a href="{{ route('reunion.edit',$s->id) }}" class="teal-text"><i class="fa fa-pencil"></i></a>
+                                <td>   <!--<a href="{{ route('reunion.edit',$s->id) }}" class="teal-text"><i class="fa fa-pencil"></i></a>-->
                                     {!! Form::open(array('route' =>['reunion.destroy',$s->id ] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp')) !!}
 
-                                    <a type="submit" name="submit" onclick="document.getElementById('supp').submit();" class="red-text"><i class="fa fa-times"></i></a>
+                                    <a type="submit" name="submit" onclick="document.getElementById('supp').submit();" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Annuler</a>
                                     {!! Form::close() !!}
 
                                 </td>
@@ -56,11 +68,41 @@
 
 
                 </div>
+
+                <div class="col-sm-6">
+                    <div id="calendar"></div>
+                </div>
+
             </div>
         </div>
 
     </section>
 
 
+
+@endsection
+
+@section('footer-script')
+
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
+
+@endsection
+
+@section('script')
+
+    $('#calendar').fullCalendar({
+           local : 'fr',
+    events: [
+    @foreach($reunion as $r)
+
+        {
+        title  : '{{ $r->designation }}',
+        start  : '2017-06-23'
+        },
+
+    @endforeach
+    ]
+    })
 
 @endsection

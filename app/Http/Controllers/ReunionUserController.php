@@ -42,13 +42,13 @@ class ReunionUserController extends Controller
             'id_user' => $request->input('id_user'),
             'id_reunion' => $request->input('id_reunion')
         ]);*/
-      /*  $n=Notification::create([
+       $n=Notification::create([
             'idType'=>$e->id_reunion,
             'type'=>'reunion',
             'lu'=>0,
             'id_user'=>$request->input('id_user')
 
-        ]);*/
+        ]);
       //  return redirect()->route('reunion.show',['id'=>$request->input('id_reunion')]);
         return back();
 

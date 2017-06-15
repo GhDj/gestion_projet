@@ -17,7 +17,7 @@
     @yield('header-script')
 
 </head>
-<body class="grey lighten-5">
+<body class="grey lighten-5" >
 
 <div class="container-fluid">
 <div class="row">
@@ -124,6 +124,8 @@
 <!--/Start your project here-->
 
 <script src="{{ asset('js/mdb.min.js') }}"></script>
+
+@yield('footer-script')
 
 <script>
 
