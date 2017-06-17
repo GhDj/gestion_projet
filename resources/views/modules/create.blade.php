@@ -1,12 +1,11 @@
-<style>
-    input[type="range"] { position: relative; margin-left: 1em; } input[type="range"]:after, input[type="range"]:before { position: absolute; top: 1em; color: #aaa; } input[type="range"]:before { left:0em; content: attr(min); } input[type="range"]:after { right: 0em; content: attr(max); }
 
-
-
-</style>
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
+    <style>
+
+
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -15,31 +14,31 @@
 
                     <div class="panel-body">
 {!! Form::open(array('route' => 'modules.store', 'method' => 'POST')) !!}
-<ul>
-    <li>
+
+    <div class="md-form">
         {!! Form::label('designation', 'Designation:') !!}
         {!! Form::text('designation') !!}
-    </li>
-    <li>
+    </div>
+    <div class="md-form">
         {!! Form::label('nbr_points', 'Nbr_points:') !!}
         {!! Form::text('nbr_points') !!}
-    </li>
-    <li>
+    </div>
+    <div class="md-form">
         {!! Form::label('avancement', 'Avancement:') !!}
-<input type="range" name="avancement" min="0" max="100" required oninput="outputUpdate(value)">
-        <output for="fader" id="volume">50</output>
+    <input value="0" type="range" name="avancement" min="0" max="100" required>
 
-    </li>
-    <br>
-    <li>
+
+    </div>
+
+    <div class="md-form">
         <input type="hidden" value="1" name="statut_module">
-    </li>
+    </div>
     <input type="hidden" value="{{ $projet->id }}" name="id_projet">
 
-    <li>
+    <div class="md-form">
         {!! Form::submit() !!}
-    </li>
-</ul>
+    </div>
+
 {!! Form::close() !!}
                     </div>
 

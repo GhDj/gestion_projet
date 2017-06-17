@@ -1,21 +1,43 @@
 @extends('layout')
 
+@section('page-title')
+
+    Projet - {{ $projet->nomProjet }}
+
+@endsection
+
+@section('title')
+
+    Projet - {{ $projet->nomProjet }}
+
+@endsection
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading"> liste des servieces : </div>
-                    <div class="panel-body">
- 
-    {{ $projet->nomProjet }} <br>
-    {{ $projet->Description }} <br>
-    {{ $projet->budget }} <br>
-    {{ $projet->date_debut }} <br>
-    {{ $projet->date_fin }} <br>
-    {{ $projet->lieu }} <br>
-    {{ $projet->id_user}} <br>
-    {{ $projet->id_service}} <br>
+
+    <section class="section">
+        <h1 class="section-heading">{{ $projet->nomProjet }}</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <h2 class="h2-responsive d-inline text-success"> Description</h2>
+                    <h5 class="">{{ $projet->description }} </h5>
+                    <hr>
+                    <h2 class="h2-responsive d-inline text-success"> <i class="fa fa-money"></i> Budget :</h2>
+                    <h4 class="d-inline ">{{ $projet->budget }} </h4>
+                    <hr>
+                    <h2 class="h2-responsive d-inline text-success"> <i class="fa fa-calendar-check-o"></i> Date :</h2>
+                    <h4 class="d-inline "> De {{ $projet->date_debut }} à  {{ $projet->date_fin }}</h4>
+                    <hr>
+                    <h2 class="h2-responsive d-inline text-success"> <i class="fa fa-location-arrow"></i> Lieu :</h2>
+                    <h4 class="d-inline "> {{ $projet->lieu }} </h4>
+                    <hr>
+                    <h2 class="h2-responsive d-inline text-success"> <i class="fa fa-user"></i> Chef de projet :</h2>
+                    <h4 class="d-inline "> {{ \App\User::where('id','=',$projet->id_user)->first()->name }} </h4>
+                    <hr>
+                    <h2 class="h2-responsive d-inline text-success"> <i class="fa fa-cog"></i> Service :</h2>
+                    <h4 class="d-inline "> {{ \App\Service::where('id','=',$projet->id_service)->first()->nom_service }} </h4>
+                    <hr>
+
     {{ $projet->etat}} <br>
                         <p>les documents </p>
                         @foreach($document as $d)
@@ -57,13 +79,9 @@
 
 
 
-                    </div>
                 </div>
             </div>
-            </form>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
+    </section>
 @endsection
