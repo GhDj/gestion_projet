@@ -140,7 +140,8 @@
         weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
         today: 'aujourd\'hui',
         clear: 'effacer',
-        formatSubmit: 'yyyy/m/dd'
+        format: 'd mmmm yyyy',
+        formatSubmit: 'd m yyyy'
     });
 
     @yield('script')

@@ -97,7 +97,7 @@ class projetController extends Controller {
       $projet->save();
 
       $files=$request->file('fichier');
-      dd($request);
+      //dd($request);
       foreach ($files as $f)
       {
           $f->storeAs('fichiersProjet',$f->getClientOriginalName(),'public');
@@ -113,7 +113,7 @@ class projetController extends Controller {
       }
 
 
-      return redirect('home');
+      return redirect('project');
   }
 
   /**

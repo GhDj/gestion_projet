@@ -26,27 +26,27 @@
 
 
                                 <div class="md-form">
-                                    {!! Form::text('nomProjet',null,['id'=>'nomProjet']) !!}
+                                    {!! Form::text('nomProjet',null,['id'=>'nomProjet','class'=>'form-control form-check validate','required']) !!}
                                     {!! Form::label('nomProjet', 'NomProjet:') !!}
 
                                 </div>
 
                                 <div class="md-form">
                                     {!! Form::label('description', 'Description:') !!}
-                                    {!! Form::text('description') !!}
+                                    {!! Form::text('description',null,['class'=>'form-control form-check validate','required']) !!}
                                 </div>
 
                             <input type="hidden" value="1" name="etat">
 
                                 <div class="md-form">
                                     {!! Form::label('budget', 'Budget:') !!}
-                                    {!! Form::text('budget') !!}
+                                    {!! Form::text('budget',null,['class'=>'form-control form-check validate','required']) !!}
                                 </div>
 
                                 <div class="form-inline col-sm-12">
                                     <div class="md-form form-group col-sm-5">
                                         {!! Form::label('date_debut', 'Date Debut:') !!}
-                                        {!! Form::text('date_debut',null,['class'=>'form-control datepicker']) !!}
+                                        {!! Form::text('date_debut',null,['class'=>'form-control datepicker','required']) !!}
                                     </div>
 
                                     <div class="md-form form-group col-sm-5">
@@ -57,7 +57,7 @@
 
                                 <div class="md-form">
                                     {!! Form::label('lieu', 'Lieu:') !!}
-                                    {!! Form::text('lieu') !!}
+                                    {!! Form::text('lieu',null,['class'=>'form-control form-check validate','required']) !!}
                                 </div>
 
 

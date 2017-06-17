@@ -47,8 +47,8 @@
                                         $y = $date[2];
                                         $dd = $d." ".$m." ".$y;
                                     ?>
-                                    {{ $s->dateReunion }}
-
+                                    {{ \Carbon\Carbon::createFromFormat('d m Y',$s->dateReunion)->toDateString() }}
+                                        {{ $s->timeReunion }}
                                 </td>
                                 <td>   <!--<a href="{{ route('reunion.edit',$s->id) }}" class="teal-text"><i class="fa fa-pencil"></i></a>-->
                                     {!! Form::open(array('route' =>['reunion.destroy',$s->id ] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp')) !!}
@@ -93,16 +93,22 @@
 
     $('#calendar').fullCalendar({
            local : 'fr',
+    title : 'Liste des réunions',
     events: [
     @foreach($reunion as $r)
 
         {
         title  : '{{ $r->designation }}',
-        start  : '2017-06-23'
+        start  : '{{ \Carbon\Carbon::createFromFormat('d m Y',$r->dateReunion)->toDateString() }}',
+
         },
 
     @endforeach
-    ]
+    ],
+
+    dayNames : ['Dimanche', 'Lundi', 'Mardi', 'Mercredi',
+    'Jeudi', 'Vendredi', 'Samedi'],
+    dayNamesShort : ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
     })
 
 @endsection
