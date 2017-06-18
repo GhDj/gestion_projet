@@ -126,9 +126,11 @@
                                                     <div class="list-group equipe-list">
 
                                                         @foreach($module as $m)
-                                                            <a href="{{ route('modules.show',['id'=>$m->id]) }}" class="list-group-item  justify-content-between @if ( $m->statut_module ==0) list-group-item-success  @endif">
+                                                            <a href="{{ route('modules.show',['id'=>$m->id]) }}" class="list-group-item  justify-content-between @if ( $m->statut_module == 1) list-group-item-success  @endif">
                                                                 {{ $m->designation }}
-                                                                <span class="badge badge-primary badge-pill">{{ $m->nbr_points }}</span>
+                                                                <span class="badge badge-primary badge-pill">
+                                                                    {{ \App\Tache::where('id_module','=',$m->id)->count() }}
+                                                                </span>
 
                                                             </a>
 
@@ -141,8 +143,20 @@
                                                 <!--/.Panel 2-->
                                                 <!--Panel 3-->
                                                 <div class="tab-pane fade" id="panel23" role="tabpanel">
-                                                    <br>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+
+                                                    <p>
+                                                    <div class="list-group equipe-list">
+                                                        @foreach($module as $mm)
+
+                                                            @foreach(\App\Tache::where('id_module','=',$mm->id)->get() as $t)
+
+                                                                <a href="{{ route('tache.show',['id'=>$t->id]) }}"  class="list-group-item  justify-content-between @if ( $t->statut_tache == 0) list-group-item-success  @endif">{{ $t->nomTache }}</a>
+
+                                                            @endforeach
+
+                                                        @endforeach
+                                                    </div>
+                                                    </p>
                                                 </div>
                                                 <!--/.Panel 3-->
                                             </div>
@@ -228,7 +242,7 @@
 
 
 
-    <!-- Central Modal Medium Success -->
+    <!-- Modal tâche -->
     <div class="modal fade right" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-notify modal-success modal-full-height modal-right" role="document">
             <!--Content-->
@@ -267,10 +281,7 @@
                             {!! Form::label('description_tache', 'Description') !!}
                             <textarea name="description_tache" id="description_tache" class="md-textarea"></textarea>
                         </div>
-                        <div class="md-form">
-                            {!! Form::label('duree', 'Duree') !!}
-                            {!! Form::text('duree') !!}
-                        </div>
+
 
 
                         <div class="form-inline">
@@ -319,7 +330,6 @@
 
 
 
-                        {!! Form::close() !!}
 
                         </p>
                     </div>
@@ -328,14 +338,16 @@
                 <!--Footer-->
                 <div class="modal-footer justify-content-center">
                    <!-- <a type="button" class="btn btn-primary-modal"><i class="fa fa-check ml-1"></i> Ajouter </a>-->
-                    <button id="submit" type="submit" class="btn btn-primary-modal pull-right" name="submit"><i class="fa fa-check"></i> Ajouter</button>
+                    <button type="submit" class="btn btn-primary-modal pull-right"><i class="fa fa-check"></i> Ajouter</button>
                     <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Annuler</a>
                 </div>
+
+                {!! Form::close() !!}
             </div>
             <!--/.Content-->
         </div>
     </div>
-    <!-- Central Modal Medium Success-->
+    <!-- Modal tâche-->
 
 
 

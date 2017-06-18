@@ -8,7 +8,7 @@ class Modules extends Model {
 
 	protected $table = 'modules';
 	public $timestamps = true;
-    protected $fillable=['designation','nbr_points','avancement','statut_module','id_projet'];
+    protected $fillable=['designation','id_projet'];
 	public function appartenir()
 	{
 		return $this->belongsTo('Projet');
