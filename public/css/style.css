@@ -234,6 +234,25 @@ li form {
      box-shadow: none;
 }
 
+.equipe-list{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.equipe-list li {
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    margin-bottom: 1px;
+    border-radius: 0 !important;
+}
+
+.equipe-list a {
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    margin-bottom: 1px;
+    border-radius: 0 !important;
+}
+
 #equipe-list a {
     border: 0;
     border-bottom: 1px solid rgba(0,0,0,0.25);

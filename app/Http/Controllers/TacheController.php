@@ -41,7 +41,7 @@ class TacheController extends Controller {
       if (Auth::check()) {
           if (Auth::user()->role == 1)
               $module=Modules::findOrFail($id);
-          $equipe=Equipe::all();
+          $equipe=Equipe::all() ;
           return view('taches.create')->with(["module"=> $module,
                                             "equipe"=>$equipe
 
