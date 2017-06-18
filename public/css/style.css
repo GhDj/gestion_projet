@@ -347,3 +347,18 @@ li form {
 {
     min-height: 450px;
 }
+
+.projet-item {
+    margin: 5%;
+    background: #fff;
+    padding: 5%;
+     border-radius: 5px;
+}
+
+.projet-encours {
+    border-left: 5px solid #06bf51;
+}
+
+.projet-cloture {
+    border-left: 5px solid #d9534f;
+}

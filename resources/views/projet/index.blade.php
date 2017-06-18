@@ -1,19 +1,50 @@
 @extends('layout')
 
+@section('page-title')
+
+    Projets
+
+@endsection
+
+@section('title')
+
+    Projets
+
+
+@endsection
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    {!! Form::open(array('url' => 'rechercheProjet', 'method' => 'POST')) !!}
+
+    <section class="section">
+        <h1 class="section-heading">Liste des projets</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                {!! Form::open(array('url' => 'rechercheProjet', 'method' => 'POST')) !!}
 
                             <input type="text" name="recherche">
                     {{ Form::submit() }}
                     {{ Form::close() }}
 
-                    <div class="panel-heading">Liste des Projets</div>
+                    <div class="row">
 
-                        <div class="panel-body">
+                        @foreach($projet as $p)
+
+                            <div class="col-sm-6">
+                                <div class="projet-item @if($p->etat == 0) projet-encours @else projet-cloture @endif">
+                                    <a href="{{ route('projet.show',['id'=>$p->id]) }}"><h3 class="h3-responsive">{{ $p->nomProjet }}</h3></a>
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="h5-responsive d-inline">Equipe : {{ \App\Equipe::where('id','=',$p->id_equipe)->first()->name }}</h5>
+                                        <h5 class="h5-responsive d-inline">Modules : {{ \App\Modules::where('id_projet','=',$p->id)->count() }}</h5>
+                                        <h5 class="h5-responsive d-inline">Etat : @if($p->etat == 1) En cours @else Cloturé @endif</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                        @endforeach
+
+                    </div>
+                    <!--
                             <table style="border: 1px solid">
                                 <tr>
                                     <th  style="border:1px solid">Nom projet </th>
@@ -54,12 +85,13 @@
                                 </tr>
                                 @endforeach
                             </table>
-                        </div>
+-->
                     {{ $projet->render() }}
 
                 </div>
             </div>
         </div>
-    </div>
 
-@endsection
+    </section>
+
+    @endsection
