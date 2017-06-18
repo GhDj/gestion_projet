@@ -78,6 +78,9 @@
                                     <a href="#" data-toggle="modal" data-target="#modalSubscription" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i>  Créer Module</a>
                                     <a href="{{ route('projet.edit',['id' => $projet->id]) }}" class="btn btn-default"><i class="fa fa-edit" aria-hidden="true"></i>  Modifier ce projet</a>
 
+
+                                    <a href="#" data-toggle="modal" data-target="#centralModalSuccess" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i>  Créer Tâche</a>
+
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <ul class="nav nav-tabs md-pills pills-primary flex-column" role="tablist">
@@ -221,6 +224,120 @@
         </div>
     </div>
     <!--Modal: Add module-->
+
+
+
+
+    <!-- Central Modal Medium Success -->
+    <div class="modal fade right" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-success modal-full-height modal-right" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <p class="heading lead">Ajouter tâche</p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fa fa-check fa-4x mb-1 animated rotateIn"></i>
+                        <p>
+                        {!! Form::open(array('route' => 'tache.store', 'method' => 'POST')) !!}
+
+                        <div class="md-form">
+                            <select name="id_module" class="mdb-select">
+                                <option disabled selected>Choisir module</option>
+                                @foreach($module as $m)
+                                    <option value="{{ $m->id }}">{{ $m->designation }}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="md-form">
+                            {!! Form::label('nomTache', 'Intitulé ') !!}
+                            {!! Form::text('nomTache') !!}
+                        </div>
+                        <div class="md-form">
+                            {!! Form::label('description_tache', 'Description') !!}
+                            <textarea name="description_tache" id="description_tache" class="md-textarea"></textarea>
+                        </div>
+                        <div class="md-form">
+                            {!! Form::label('duree', 'Duree') !!}
+                            {!! Form::text('duree') !!}
+                        </div>
+
+
+                        <div class="form-inline">
+                            <div class="md-form col-sm-6">
+                                {!! Form::label('date_debut_tache', 'Date debut') !!}
+                                {!! Form::text('date_debut_tache',null,['class'=>'datepicker']) !!}
+                            </div>
+                            <div class="md-form col-sm-6">
+                                {!! Form::label('date_fin_tache', 'Date fin') !!}
+                                {!! Form::text('date_fin_tache',null,['class'=>'datepicker']) !!}
+                            </div>
+                        </div>
+
+                        <div class="md-form">
+                            {!! Form::label('priorite', 'Priorite ') !!}
+
+                        </div>
+                        <div class="range-field">
+
+                            <input type="range" name="priorite" min="0" max="10" value="0">
+                        </div>
+
+
+                        <input type="hidden" value="1" name="statut_tache">
+
+
+
+                        <div class="md-form">
+                            {!! Form::label('cout', 'Cout:') !!}
+                            {!! Form::number('cout',null,['required']) !!}
+                        </div>
+
+                        <div class="md-form">
+                            <select name="id_equipe" id="id_equipe" class="mdb-select">
+                                <option disabled selected>Choisir employé</option>
+                                @foreach(\App\Equipe_user::where('id_equipe','=',$projet->id_equipe)->get() as $e)
+                                    <option value="{{ $e->id_user }}">{{ \App\User::where('id','=',$e->id_user)->first()->name }}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+
+
+
+                        {!! Form::token() !!}
+
+
+
+                        {!! Form::close() !!}
+
+                        </p>
+                    </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                   <!-- <a type="button" class="btn btn-primary-modal"><i class="fa fa-check ml-1"></i> Ajouter </a>-->
+                    <button id="submit" type="submit" class="btn btn-primary-modal pull-right" name="submit"><i class="fa fa-check"></i> Ajouter</button>
+                    <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Annuler</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Central Modal Medium Success-->
+
+
 
 
 @endsection

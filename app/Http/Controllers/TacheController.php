@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Commentaire;
 use App\Equipe;
 use App\Modules;
+use App\Projet;
 use App\Tache;
 use App\TacheEquipe;
 use App\User;
@@ -41,7 +42,10 @@ class TacheController extends Controller {
       if (Auth::check()) {
           if (Auth::user()->role == 1)
               $module=Modules::findOrFail($id);
-          $equipe=Equipe::all() ;
+
+          $projet = Projet::where('id','=',$module->id_projet)->first();
+          $equipe=Equipe::where('id','=',$projet->id_equipe)->first();
+          //dd($equipe);
           return view('taches.create')->with(["module"=> $module,
                                             "equipe"=>$equipe
 
@@ -66,7 +70,8 @@ class TacheController extends Controller {
       $e->id_tache=$t->id;
 
       $e->save();
-      return redirect()->route('tache.show',['id'=>$t->id]);
+      //return redirect()->route('tache.show',['id'=>$t->id]);
+      return back();
   }
 
   /**
