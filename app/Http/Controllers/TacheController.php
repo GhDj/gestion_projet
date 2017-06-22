@@ -8,6 +8,7 @@ use App\Modules;
 use App\Projet;
 use App\Tache;
 use App\TacheEquipe;
+use App\TacheUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,8 +66,8 @@ class TacheController extends Controller {
   {
 
       $t=Tache::create($request->all());
-      $e=new TacheEquipe();
-      $e->id_equipe=$request->input("id_equipe");
+      $e=new TacheUser();
+      $e->id_user=$request->input("id_user");
       $e->id_tache=$t->id;
 
       $e->save();
@@ -86,7 +87,7 @@ class TacheController extends Controller {
       $module=Modules::where('id_projet','=',$tache->id)->get();
       $user=User::where('role','=',2 )->get();
       $equipe=Equipe::all();
-      $tacheequipe=TacheEquipe::where('id_tache','=',$id)->first();
+      $tacheequipe=TacheUser::where('id_tache','=',$id)->first();
       $commentaire=Commentaire::all();
       //dd($commentaire);
      // dd($tacheequipe);

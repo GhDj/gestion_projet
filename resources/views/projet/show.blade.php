@@ -82,20 +82,20 @@
                                     <a href="#" data-toggle="modal" data-target="#centralModalSuccess" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i>  Créer Tâche</a>
 
                                     <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                            <ul class="nav nav-tabs md-pills pills-primary flex-column" role="tablist">
-                                                <li class="nav-item">
+                                        <div class="col-md-12 col-sm-12">
+                                            <ul class="nav nav-tabs md-pills pills-ins" role="tablist">
+                                                <li class="nav-item col-sm-4">
                                                     <a class="nav-link active" data-toggle="tab" href="#panel21" role="tab">L'équipe</a>
                                                 </li>
-                                                <li class="nav-item">
+                                                <li class="nav-item col-sm-4">
                                                     <a class="nav-link" data-toggle="tab" href="#panel22" role="tab">Modules </a>
                                                 </li>
-                                                <li class="nav-item">
+                                                <li class="nav-item col-sm-4">
                                                     <a class="nav-link" data-toggle="tab" href="#panel23" role="tab">Tâches </a>
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-md-8 col-sm-8">
+                                        <div class="col-md-12 col-sm-12">
                                             <!-- Tab panels -->
                                             <div class="tab-content vertical">
                                                 <!--Panel 1-->
@@ -315,7 +315,7 @@
                         </div>
 
                         <div class="md-form">
-                            <select name="id_equipe" id="id_equipe" class="mdb-select">
+                            <select name="id_user" id="id_user" class="mdb-select">
                                 <option disabled selected>Choisir employé</option>
                                 @foreach(\App\Equipe_user::where('id_equipe','=',$projet->id_equipe)->get() as $e)
                                     <option value="{{ $e->id_user }}">{{ \App\User::where('id','=',$e->id_user)->first()->name }}</option>

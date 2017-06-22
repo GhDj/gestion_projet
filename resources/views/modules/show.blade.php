@@ -55,8 +55,11 @@
                         <div class="list-group equipe-list">
                             @foreach($tache as $t)
 
+                        <div class="list-group-item  justify-content-between @if ( $t->statut_tache == 0) list-group-item-success  @endif">
+                            <a href="{{ route('tache.show',['id'=>$t->id]) }}"  class="">{{ $t->nomTache }}</a>
+                            <a href="#"> {{ \App\User::where('id','=',\App\TacheUser::where('id_tache','=',$t->id)->first()->id_user)->first()->name }} </a>
+                        </div>
 
-                                    <a href="{{ route('tache.show',['id'=>$t->id]) }}"  class="list-group-item  justify-content-between @if ( $t->statut_tache == 0) list-group-item-success  @endif">{{ $t->nomTache }}</a>
 
 
 
