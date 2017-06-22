@@ -20,7 +20,10 @@
 @endsection
 
 @section('content')
-    <div class="container">
+
+    <section class="section">
+
+        <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
 
@@ -66,7 +69,46 @@
                             </div>
                         </div>
 
-                       @foreach($commentaire as $c)
+
+
+                        <div class="row">
+                            <a href="#" data-toggle="modal" data-target="#modalSubscription" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i>Ajouter Matériel</a>
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom Matériel </th>
+                                    <!--<th> Chef de service </th>-->
+                                    <th> Actions </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach(\App\Materiel::where('id_tache','=',$tache->id)->get() as $m)
+
+                                    <tr>
+                                        <td>{{ $m->id }}</td>
+                                        <td>{{ $m->nom_materiel }}</td>
+                                     <!--   <td>
+                                            <?php
+                                            //$r = \App\User::where('id','=',$s->chef_service)->first();
+                                            //echo $r['name'];
+                                            ?>
+                                        </td>-->
+                                        <td><!--   <a href="{{ route('materiel.edit',$m->id) }}" class="teal-text"><i class="fa fa-pencil"></i></a>-->
+                                            {!! Form::open(array('route' =>['materiel.destroy',$m->id ] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp')) !!}
+
+                                            <a type="submit" name="submit" onclick="document.getElementById('supp').submit();" class="red-text"><i class="fa fa-times"></i></a>
+                                            {!! Form::close() !!}
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                    @foreach($commentaire as $c)
 
                                 <label> {{ \App\User::findOrFail($c->id_user)->name  }} : </label>
 
@@ -97,4 +139,54 @@
         </div>
 
     </div>
+
+    </section>
+
+
+    <div class="modal fade" id="modalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Header-->
+                <div class="modal-header success-color darken-3 white-text">
+                    <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="title">Ajouter Matériel</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body mb-0">
+
+                    {!! Form::open(array('route' => 'materiel.store', 'method' => 'POST')) !!}
+                    <div class="md-form form-sm">
+                        <input type="text" id="nom_materiel" name="nom_materiel" class="form-control">
+                        <label for="nom_materiel">Nom de matériel</label>
+                    </div>
+
+                    <input type="hidden" value="{{ $tache->id }}" name="id_tache">
+
+                    <div class="text-center mt-1-half">
+                        <button class="btn btn-success mb-1">Créer <i class="fa fa-check ml-1"></i></button>
+                    </div>
+                    {{ Form::token() }}
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: Subscription From-->
+
+
+
+@endsection
+
+
+@section('script')
+
+
+    $('#myModal').modal();
+
 @endsection

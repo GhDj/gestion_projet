@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Materiel;
+use App\Notification;
 use App\Tache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -59,7 +60,8 @@ class MaterielController extends Controller {
           'id_user'=>$request->input('id_tache')
 
       ]);
-      return redirect()->route('materiel.show',['id'=>$m->id]);
+      //return redirect()->route('materiel.show',['id'=>$m->id]);
+      return back();
   }
 
 
@@ -115,7 +117,9 @@ class MaterielController extends Controller {
    */
   public function destroy($id)
   {
-    
+      $s = Materiel::where('id','=',"$id")->first();
+      $s->delete();
+      return back();
   }
   
 }

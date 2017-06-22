@@ -20,6 +20,7 @@
 @endsection
 
 @section('content')
+    <section class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
@@ -38,7 +39,15 @@
                                 ['id_module','=',$module->id],
                                 ['statut_tache','=',1]
                         ])->count();
-                        $avancement = ($done/$totale)*100;
+                            if ($totale == 0)
+                                {
+                                    $avancement = 0;
+                                }
+                                else
+                                    {
+
+                                        $avancement = ($done/$totale)*100;
+                                    }
                         ?>
                         <h3>Nombre des tâches : {{ $totale }}</h3>
 <h3>Avancement :</h3>
@@ -85,4 +94,5 @@
         </div>
 
     </div>
+    </section>
 @endsection
