@@ -61,6 +61,21 @@
                                 </p>
                             </div>
                             <div class="col-sm-6">
+
+                                <p>
+                                {!! Form::open(array('route' =>['update_stat',$tache->id ] , 'method' => 'POST','autocomplete'=>'off','id'=>'up-tache')) !!}
+
+                                <!--    <a type="submit" name="submit" class="btn btn-danger"><i class="fa fa-times"></i> Fermer la tâche</a>-->
+                                <div class="switch">
+                                    <label>
+                                        <h5 class="h5-responsive d-inline">En cours</h5>
+                                        <input type="checkbox" @if($tache->statut_tache == 1) checked @endif onchange="document.getElementById('up-tache').submit();">
+                                        <span class="lever success-color"></span>
+                                        <h5 class="h5-responsive d-inline">Terminé</h5>
+                                    </label>
+                                </div>
+                                {!! Form::close() !!}
+                                </p>
                                 <p>
                                 <h4 class="h4-responsive text-success"> <i class="fa fa-file-text-o"></i> Description :</h4>
                                 <h5 class=""> {{ $tache->description_tache }} </h5>
@@ -73,6 +88,11 @@
 
                         <div class="row">
                             <a href="#" data-toggle="modal" data-target="#modalSubscription" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i>Ajouter Matériel</a>
+                            {!! Form::open(array('route' =>['tache.destroy',$tache->id ] , 'method' => 'DELETE','autocomplete'=>'off','id'=>'supp-tache')) !!}
+
+                            <a type="submit" name="submit" onclick="document.getElementById('supp-tache').submit();" class="btn btn-danger"><i class="fa fa-times"></i> Supprimer la tâche</a>
+                            {!! Form::close() !!}
+
 
                             <table class="table table-striped">
                                 <thead>

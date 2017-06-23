@@ -152,7 +152,21 @@ class TacheController extends Controller {
 
   }
 
-  /**
+    public function update_stat($id)
+    {
+        $tache=Tache::findOrFail($id);
+        if ($tache->statut_tache == 0)
+        {
+            $tache->statut_tache= 1;
+        } else {
+            $tache->statut_tache= 0;
+        }
+
+        $tache->save();
+        return back();
+
+    }
+        /**
    * Remove the specified resource from storage.
    *
    * @param  int  $id

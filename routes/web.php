@@ -26,6 +26,7 @@ Route::get('/projet/modules/tache/materiel/create/{id}', 'materielController@cre
 Route::get('/projet/modules/tache/logistique/create/{id}', 'logistiqueController@create');
 Route::get('/projet/modules/tache/consommable/create/{id}', 'consommableController@create');
 
+Route::post('/update_stat/{id}', 'TacheController@update_stat')->name('update_stat');
 
 
 
@@ -81,7 +82,7 @@ Route::get('/connexion',function () {
 
 
 
-
+Route::get('/diagramme','diagrammeController@index');
 
 
 

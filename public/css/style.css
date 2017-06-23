@@ -362,3 +362,11 @@ li form {
 .projet-cloture {
     border-left: 5px solid #d9534f;
 }
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #06bf51;
+}
+
+.switch label .lever:after {
+    background-color: #d9534f;
+}
