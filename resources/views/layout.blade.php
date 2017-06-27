@@ -52,7 +52,7 @@
 
                 </li>
                <li> <hr></li>
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-pie-chart  menu-icon"></i> <br> Diagrammes </a>
+                <li class=" text-center"><a href="{{ route('diagramme') }}" class="collapsible-header waves-effect arrow-r"><i class="fa fa-pie-chart  menu-icon"></i> <br> Diagrammes </a>
 
                 </li>
                 <li> <hr></li>
@@ -139,11 +139,29 @@
     });
     $('.datepicker').pickadate({
         monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        monthsShort : ['Jan', 'Fév','Mar','Avr', 'Mai','Juin','Juil','Août','Sep','Oct','Nov','Déc' ],
         weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-        today: 'aujourd\'hui',
-        clear: 'effacer',
+        weekdaysFull : ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        today: "Aujourd'hui",
         format: 'd mmmm yyyy',
-        formatSubmit: 'd m yyyy'
+        formatSubmit: 'd m yyyy',
+        // Buttons
+        clear: 'Effacer',
+        close: 'Fermer',
+        onSet : function (context) {
+            console.log('Just set stuff:', context);
+            $(this).pickadate({
+              min: new Date(2017,6,28)
+            });
+        }
+    });
+
+    $('#date_debut').change(function () {
+        console.log([parseInt($('input[name=date_debut_submit]').val().split(' ')[2]),parseInt($('input[name=date_debut_submit]').val().split(' ')[1]),parseInt($('input[name=date_debut_submit]').val().split(' ')[0])]);
+        $('.datepicker').pickadate({
+
+            min:new Date(parseInt($('input[name=date_debut_submit]').val().split(' ')[2]),parseInt($('input[name=date_debut_submit]').val().split(' ')[1]),parseInt($('input[name=date_debut_submit]').val().split(' ')[0]))
+        });
     });
 
     @yield('script')

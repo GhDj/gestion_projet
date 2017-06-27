@@ -82,7 +82,7 @@ Route::get('/connexion',function () {
 
 
 
-Route::get('/diagramme','diagrammeController@index');
+Route::get('/diagramme','diagrammeController@index')->name('diagramme');
 
 
 

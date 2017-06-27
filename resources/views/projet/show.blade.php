@@ -164,6 +164,96 @@
                                     </div>
 
                                 </div>
+
+                                <div class="col-sm-4">
+                                   <div class="container">
+                                       <?php $totale_tache = 0;
+                                       $tache_finis = 0;
+                                       ?>
+                                       @foreach(\App\Modules::where('id_projet','=',$projet->id)->get() as $md)
+
+                                           <?php $totale_tache += \App\Tache::where('id_module','=',$md->id)->count();
+                                           $tache_finis += \App\Tache::where([
+                                                   ['id_module','=',$md->id],
+                                                   ['statut_tache','=','1']
+                                           ])->count();
+                                           ?>
+
+                                       @endforeach
+
+                                       <h3 class="h3-responsive pull-left bold">Tâches </h3>
+                                       <span class="pull-right grey-text">{{ $tache_finis }}/{{ $totale_tache }}</span>
+                                       <div class="progress ">
+                                           @if($totale_tache == 0)
+                                               <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                           @else
+                                               <div class="progress-bar bg-success" role="progressbar" style="width: {{ $tache_finis*100/$totale_tache }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                           @endif
+
+
+                                       </div>
+
+                                   </div>
+
+                                       <div class="container">
+                                           <?php $totale_modules = 0;
+                                           $modules_finis = 0;
+                                           ?>
+                                           @foreach(\App\Modules::where('id_projet','=',$projet->id)->get() as $md)
+
+                                               <?php
+                                               $i = 0;
+                                               ?>
+                                               @foreach(\App\Tache::where('id_module','=',$md->id)->get() as $ta)
+                                                   <?php
+                                                   $i++;
+                                                   ?>
+                                                   @if(($ta->statut_tache == 1) AND ($i==\App\Tache::where('id_module','=',$md->id)->count()))
+
+                                                       <?php
+                                                       $modules_finis++;
+                                                       ?>
+                                                   @endif
+
+                                               @endforeach
+
+                                               <?php
+
+                                               $totale_modules++;
+                                               ?>
+
+                                           @endforeach
+
+
+                                           <h3 class="h3-responsive pull-left bold">Modules </h3>
+                                           <span class="pull-right grey-text">{{ $modules_finis }}/{{ $totale_modules }}</span>
+                                           <div class="progress">
+                                               @if($totale_modules == 0)
+                                                   <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                               @else
+                                                   <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $modules_finis*100/$totale_modules }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                               @endif
+
+
+                                           </div>
+
+                                       </div>
+
+                                    <div class="container">
+                                        <?php  $dt=\Carbon\Carbon::createFromFormat('d m Y',$projet->date_debut);
+                                        $df=\Carbon\Carbon::createFromFormat('d m Y',$projet->date_fin);
+                                        $difference = $dt->diffInDays($df);
+                                        $reste = $df->diffInDays(\Carbon\Carbon::now());
+                                       // echo $difference."****".$reste;
+                                        ?>
+                                            <h3 class="h3-responsive pull-left bold">Jours </h3>
+                                            <span class="pull-right grey-text">{{ $difference-$reste }}/{{ $difference }}</span>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: {{ ($difference-$reste)*100/$difference }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <p>les documents </p>
