@@ -75,7 +75,7 @@
                                 <!--Card content-->
                                 <div class="card-block">
                                     <div class="progress">
-                                        <div class="progress-bar  green lighten" role="progressbar" style="width: {{ \App\Tache::where('statut_tache','=',0)->count()/\App\Tache::all()->count()*100 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar  green lighten" role="progressbar" style="width: {{ \App\Tache::where('statut_tache','=',1)->count()/\App\Tache::all()->count()*100 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <!--Text-->
                                     <p class="card-text">Progression des tâches ({{ \App\Tache::where('statut_tache','=',1)->count()/\App\Tache::all()->count()*100 }}%)</p>
