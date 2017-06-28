@@ -75,15 +75,6 @@
                             @endforeach
                         </div>
 
-                         @foreach($tache as $t)
-
-
-
-                                <a href="/projet/modules/tache/materiel/create/{{$t->id}}"> Ajouter materiel</a>
-
-
-
-                        @endforeach
 
                     </div>
 

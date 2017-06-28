@@ -41,7 +41,7 @@
         <li>
 
             <ul class="collapsible collapsible-accordion sidenav">
-                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-list menu-icon"></i> <br> Tableau de bord</a>
+                <li class=" text-center"><a href="{{ route('home') }}" class="collapsible-header waves-effect arrow-r"><i class="fa fa-list menu-icon"></i> <br> Tableau de bord</a>
 
                 </li>
                 <li><hr></li>
@@ -86,14 +86,47 @@
 
                 <ul class="nav navbar-nav ml-auto flex-row">
                     <li class="nav-item active">
-                        <a class="nav-link"><i class="fa fa-envelope" aria-hidden="true"></i> Messages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"><i class="fa fa-bell" aria-hidden="true"></i> Notifications</a>
+                        <a href="/discussion/{{ \App\Chat::where([
+                        ['emetteur','=',Auth::user()->id],
+                        ['vu','=',0]
+                        ])->first()->recepteur }}" class="nav-link"><i class="fa fa-envelope" aria-hidden="true"></i> Messages <span class="badge red">{{ \App\Chat::where([
+                        ['emetteur','=',Auth::user()->id],
+                        ['vu','=',0]
+                        ])->count() }}</span> </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell" aria-hidden="true"></i> Notifications <span class="badge red">
+                                {{ \App\Notification::where([
+                                    ['id_user','=',Auth::user()->id],
+                                    ['lu','=',0]
+                                ])->count() }}
+                            </span>
+                        </a>
+                        <div  class="dropdown-menu dropdown" aria-labelledby="dropdownMenu2">
+
+                            @foreach(\App\Notification::where([['id_user','=',Auth::user()->id],['lu','=',0]])->paginate(5) as $n)
+
+                                @if($n->type == "equipe")
+                                    <a class="dropdown-item" href="{{ route('equipe.show',['id'=>1]) }}">
+                                        <i class="fa fa-user" aria-hidden="true"></i>  Ajouté dans l'équipe <span class="bold">
+                                        {{ \App\Equipe::where('id','=',1)->first()->name }}</span>
+                                    </a>
+                                @endif
+
+                            @endforeach
+
+
+
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>  {{ Auth::user()->name }}</a>
                         <div  class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+
+                            <a class="dropdown-item" href="{{ route('user.edit',['id'=>Auth::id()]) }}">
+                                <i class="fa fa-user-o" aria-hidden="true"></i>  Mon Profile
+                            </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

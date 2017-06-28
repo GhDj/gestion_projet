@@ -194,7 +194,7 @@
                                        </div>
 
                                    </div>
-
+                                    <br>
                                        <div class="container">
                                            <?php $totale_modules = 0;
                                            $modules_finis = 0;
@@ -238,7 +238,7 @@
                                            </div>
 
                                        </div>
-
+                                    <br>
                                     <div class="container">
                                         <?php  $dt=\Carbon\Carbon::createFromFormat('d m Y',$projet->date_debut);
                                         $df=\Carbon\Carbon::createFromFormat('d m Y',$projet->date_fin);
@@ -252,18 +252,26 @@
                                                 <div class="progress-bar bg-primary" role="progressbar" style="width: {{ ($difference-$reste)*100/$difference }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                     </div>
+                                    <br>
+                                    <div class="container">
+                                        <h3 class="h3-responsive">Documents</h3>
+                                        <div class="list-group equipe-list">
+                                        @foreach($document as $d)
+                                            @if(strtoupper($d->type_doc)=="JPEG"||strtoupper($d->type_doc)=="PNG"||strtoupper($d->type_doc)=="GIF"||strtoupper($d->type_doc)=="JPG")
+                                                    <a href="#" class="list-group-item  justify-content-between "> <img src="/storage/fichiersProjet/{{ $d->url_doc }}"> </a>
+                                            @else
+                                                <a target="_blank" href="/storage/fichiersProjet/{{ $d->url_doc }}" class="list-group-item  justify-content-between" > {{ $d->nom_doc }}</a>
+                                            @endif
+                                        @endforeach
+                                            </div>
+
+                                    </div>
+
                                 </div>
 
                             </div>
 
-                            <p>les documents </p>
-                            @foreach($document as $d)
-                                @if(strtoupper($d->type_doc)=="JPEG"||strtoupper($d->type_doc)=="PNG"||strtoupper($d->type_doc)=="GIF"||strtoupper($d->type_doc)=="JPG")
-                                    <img src="/storage/fichiersProjet/{{ $d->url_doc }}">
-                                @else
-                                    <a target="_blank" href="/storage/fichiersProjet/{{ $d->url_doc }}"> {{ $d->nom_doc }}</a>
-                                @endif
-                            @endforeach
+
                             <br>
                             <!--<a href="/projet/modules/create/{{ $projet->id }}"> Ajouter un module</a>-->
 

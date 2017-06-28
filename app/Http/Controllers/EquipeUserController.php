@@ -44,7 +44,7 @@ class EquipeUserController extends Controller
       //  $this->validate($request,$rules);
         $e=Equipe_user::create($request->all());
         $n=Notification::create([
-            'idType'=>$e->id,
+            'idType'=>$request->input('id_equipe'),
 
             'type'=>'equipe',
             'lu'=>0,

@@ -161,8 +161,21 @@ if ($msgNomlu) {
                 ['recepteur','=',$id],
                 ['emetteur','=',Auth::user()->id]
             ])->get();
-
-         return view("Chat.discussion")->with('chat',$chat);
+        $liste= Chat::where('emetteur','=',Auth::user()->id)
+            ->orWhere('recepteur','=', Auth::user()->id)
+            ->get();
+        $table=[];
+        foreach ($liste as $l){
+            array_push($table,$l->emetteur);
+        }
+        $table1=array_unique($table);
+        $liste=$table1;
+        //dd($liste);
+         return view("Chat.discussion")->with([
+             'chat'=>$chat,
+             'liste'=>$liste,
+             'id' => $id
+         ]);
 
     }
 }

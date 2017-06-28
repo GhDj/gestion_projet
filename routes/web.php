@@ -18,7 +18,7 @@ Route::resource('user', 'userController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/projet/modules/{id}', 'ModulesController@listeModule');
 Route::get('/projet/modules/create/{id}', 'ModulesController@create');
 Route::get('/projet/modules/tache/create/{id}', 'TacheController@create');
