@@ -18,6 +18,7 @@
         <h1 class="section-heading">Liste des projets</h1>
         <div class="container">
             <div class="row">
+                <a href="{{ route('projet.create') }}" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Ajouter projet</a>
                 <div class="col-sm-12">
 
                 {!! Form::open(array('url' => 'rechercheProjet', 'method' => 'POST')) !!}
@@ -25,6 +26,7 @@
                             <input type="text" name="recherche">
                     {{ Form::submit() }}
                     {{ Form::close() }}
+
 
                     <div class="row">
 
