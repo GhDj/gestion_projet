@@ -64,6 +64,11 @@
 
                 </li>
                 <li> <hr></li>
+                <li class=" text-center"><a class="collapsible-header waves-effect arrow-r"><a href="{{ route('planing') }}"><i class="fa fa-cog menu-icon"></i> <br> Planing </a>
+
+                </li>
+                <li>
+                    <hr></li>
             </ul>
         </li>
         <!--/. Side navigation links -->

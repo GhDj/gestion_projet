@@ -84,6 +84,10 @@ Route::get('/connexion',function () {
 
 Route::get('/diagramme','diagrammeController@index')->name('diagramme');
 
+Route::get('/planing',function (){
+   return view('planing');
+})->name('planing');
+
 
 
 

@@ -66,7 +66,7 @@
                                 <div class="admin-up">
                                     <i class="fa fa-tasks green lighten"></i>
                                     <div class="data">
-                                        <p>{{ \App\Tache::where('statut_tache','=',0)->count() }}/{{ \App\Tache::all()->count() }}</p>
+                                        <p>{{ \App\Tache::where('statut_tache','=',1)->count() }}/{{ \App\Tache::all()->count() }}</p>
                                         <h3>Tâches</h3>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                         <div class="progress-bar  green lighten" role="progressbar" style="width: {{ \App\Tache::where('statut_tache','=',0)->count()/\App\Tache::all()->count()*100 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <!--Text-->
-                                    <p class="card-text">Progression des tâches ({{ \App\Tache::where('statut_tache','=',0)->count()/\App\Tache::all()->count()*100 }}%)</p>
+                                    <p class="card-text">Progression des tâches ({{ \App\Tache::where('statut_tache','=',1)->count()/\App\Tache::all()->count()*100 }}%)</p>
                                 </div>
                                 <!--/.Card content-->
 
