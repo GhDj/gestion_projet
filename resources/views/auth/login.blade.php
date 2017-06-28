@@ -297,7 +297,8 @@
         }
 
         #logo img {
-            width: 100%;
+            width: 53%;
+            top: 180px;
         }
 
     </style>
@@ -305,7 +306,7 @@
 <body>
 <canvas></canvas>
 <div id="logo">
-    <img src="{{ asset('img/logo.png') }}" alt="">
+    <img src="{{ asset('img/logo1.png') }}" alt="">
 </div>
 <div id="container">
 

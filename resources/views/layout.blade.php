@@ -30,7 +30,7 @@
         <!-- Logo -->
         <li>
             <div class="logo-wrapper waves-effect">
-                <a href="#"><img src="{{ asset('img/logo.png') }}" class="img-fluid flex-center"></a>
+                <a href="#"><img src="{{ asset('img/logo1.png') }}" class="img-fluid flex-center"></a>
             </div>
         </li>
         <!--/. Logo -->
@@ -41,7 +41,7 @@
         <li>
 
             <ul class="collapsible collapsible-accordion sidenav">
-                <li class=" text-center"><a href="{{ route('home') }}" class="collapsible-header waves-effect arrow-r"><i class="fa fa-list menu-icon"></i> <br> Tableau de bord</a>
+                <li class=" text-center  "><a href="{{ route('home') }}" class="collapsible-header waves-effect arrow-r"><i class="fa fa-list menu-icon"></i> <br> Tableau de bord</a>
 
                 </li>
                 <li><hr></li>

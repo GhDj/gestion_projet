@@ -72,17 +72,7 @@
                                  <input id="matricule" type="text" class="form-control validate" name="matricule" required placeholder="{{ $user->matricule }}" value="{{ $user->matricule }}">
                                  <label for="matricule">Matricule :</label>
                              </div>
-                             <section class="section">
 
-                                 <div class="btn-group" data-toggle="buttons">
-                                     <label class="btn btn-blue-grey active">
-                                         <input type="radio" autocomplete="off" name="role" @if($user->role==1) {{ "checked" }}@endif  value=1> Personnel
-                                     </label>
-                                     <label class="btn btn-blue-grey">
-                                         <input type="radio" autocomplete="off" name="role" @if($user->role==2) {{ "checked" }}@endif value=2> Chef de projet
-                                     </label>
-                                 </div>
-                             </section>
 
 
                              <div class="md-form">
